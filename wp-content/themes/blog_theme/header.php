@@ -23,7 +23,7 @@
 				<?php bloginfo('description'); ?>
 			</div>
 			 <?php do_action('icl_language_selector'); ?>
-			<div class="subscribe"><a href="?page_id=2"><?php echo __('abonnes toi aux reviews', 'wp_deluxe'); ?></a></div>
+			<div class="subscribe"><a href="?page_id=2"><?php echo __('register to the newsletter', 'wp_deluxe'); ?></a></div>
 		</div>
 		<div id="slider">
 			<div id="content_slider">
