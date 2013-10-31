@@ -59,7 +59,7 @@
 #screen #news_content .news p.fl, img.alignleft {margin:0px 20px 0px 20px; float:left;}
 #screen #news_content .news p.fr, img.alignright {margin:0px 20px 0px 20px; float:right;}
 #screen #news_content .news p.center, img.aligncenter {margin:0px 20px 0px 20px;}
-#screen #news_content .news p, img.aligncenter {margin:0px 20px 0px 20px;}
+#screen #news_content .news p, img.aligncenter {margin:10px 20px 0px 20px;}
 #screen #news_content .news h1 {font-family: 'Cambria'; font-size: 32px; margin:15px 15px 25px 15px;}
 #screen #news_content .news h2 {font-family: 'Cambria'; font-size: 24px; margin:10px 10px 20px 10px;}
 
