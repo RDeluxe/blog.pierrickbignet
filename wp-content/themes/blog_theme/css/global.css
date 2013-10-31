@@ -62,6 +62,7 @@
 #screen #news_content .news p, img.aligncenter {margin:10px 20px 0px 20px;}
 #screen #news_content .news h1 {font-family: 'Cambria'; font-size: 32px; margin:15px 15px 25px 15px;}
 #screen #news_content .news h2 {font-family: 'Cambria'; font-size: 24px; margin:10px 10px 20px 10px;}
+#screen #news_content .news h3 {font-family: 'Cambria'; font-size: 16px; margin:8px 8px 16px 8px;}
 
 #screen #pagination { margin:0px auto 0px auto; padding:10px 0px 10px 0px; width:1004px; font-family:'Raleway'; text-align:center;}
 #screen #pagination a {color:#000000; text-decoration:none;}
