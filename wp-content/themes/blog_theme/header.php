@@ -65,7 +65,7 @@
 					} 
 					?>
 				</ul>
-				<div class="show_all"><a href="#"><?php echo __('voir toutes les reviews', 'wp_deluxe'); ?></a></div>
+				<div class="show_all"><a href="#"><?php echo __('see all articles', 'wp_deluxe'); ?></a></div>
 			</div>
 		</div>
 	</div>
