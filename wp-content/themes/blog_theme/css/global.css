@@ -48,7 +48,7 @@
 
 #screen #news_content .news {margin:30px auto 0px auto; width:1004px; font-family:'Cambria'; background:#ffffff; text-align:center; border-bottom:1px solid #b5b5b5; padding-bottom:20px;}
 #screen #news_content .news .header_news, #screen #news_content .news .aligncenter {margin-top:3px;}
-#screen #news_content .news p {margin:15px 20px 15px 20px; font-family:'Cambria';  font-size:16px; text-align:justify; line-height: 150%;}
+#screen #news_content .news p {margin:15px 20px 15px 20px; font-family:'Cambria';  font-size:16px; text-align:justify; line-height: 1.5em;}
 #screen #news_content .news p a { text-decoration:underline; color:#A71111;}
 #screen #news_content .news p a:hover {text-decoration:none;}
 #screen #news_content .news p.legend_right { clear:both; text-align:right; margin:0px 20px 0px 20px; font-style:italic; font-family:'Arial'; color:#575757; font-size:12px;}
@@ -63,6 +63,7 @@
 #screen #news_content .news h1 {font-family: 'Cambria'; font-size: 32px; margin:15px 15px 25px 15px;}
 #screen #news_content .news h2 {font-family: 'Cambria'; font-size: 24px; margin:10px 10px 20px 10px;}
 #screen #news_content .news h3 {font-family: 'Cambria'; font-size: 16px; margin:8px 8px 16px 8px;}
+#screen #news_content .news ul {list-style: disc; margin:15px 20px 15px 20px;}
 
 #screen #pagination { margin:0px auto 0px auto; padding:10px 0px 10px 0px; width:1004px; font-family:'Raleway'; text-align:center;}
 #screen #pagination a {color:#000000; text-decoration:none;}

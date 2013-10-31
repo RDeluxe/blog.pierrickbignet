@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<library>
+	<item>
+		<name>Arctext</name>
+		<description>Curving Text with CSS3 and jQuery</description>
+		<url>http://tympanus.net/codrops/2012/01/24/arctext-js-curving-text-with-css3-and-jquery/</url>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>aSlyder</name>
+		<description>Highly versitile slideshow engine (by the creator of JAM)</description>
+		<url>http://www.avant5.com/aslyder</url>
+		<license>GNU</license>
+	</item>
+	<item>
+		<name>Avgrund Modal</name>
+		<description>Modal pop ups</description>
+		<url>http://labs.voronianski.com/jquery.avgrund.js/</url>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>Countdown</name>
+		<description>A simple JavaScript API for producing an accurate, intuitive description of the timespan between two Date instances.</description>
+		<url>http://countdownjs.org/</url>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>FitText</name>
+		<description>Use this plugin on your fluid or responsive layout to achieve scalable headlines that fill the width of a parent element.</description>
+		<url>http://fittextjs.com/</url>
+		<license>WTFPL</license>
+	</item>
+	<item>
+		<name>Gridster</name>
+		<description>Build intuitive draggable layouts from elements spanning multiple columns</description>
+		<url>http://gridster.net/</url>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>iCheck</name>
+		<description>Add custom styling to radio buttons and check boxes, even in IE6</description>
+		<url>http://damirfoy.com/iCheck/</url>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery Countdown</name>
+		<description>A jQuery plugin that sets a div or span to show a countdown to a given time.</description>
+		<url>http://keith-wood.name/countdown.html</url>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery Knob</name>
+		<description>Creates interactive dials</description>
+		<url>http://anthonyterrien.com/knob/</url>
+		<license>MIT,GPL</license>
+	</item>	
+	<item>
+		<name>Lettering</name>
+		<description>jQuery plugin for radical web typography</description>
+		<url>http://letteringjs.com/</url>
+		<license>WTFPL</license>
+	</item>
+	<item>
+		<name>Tubular</name>
+		<description>Display a Youtube video as webpage background</description>
+		<url>http://www.seanmccambridge.com/tubular/</url>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>Typeahead</name>
+		<description>Autocomplete plugin by Twitter</description>
+		<url>http://twitter.github.io/typeahead.js/</url>
+		<license>MIT</license>
+	</item>
+	
+	
+	<!-- WORDPRESS INCLUDED LIBRARIES -->
+	<item>
+		<name>jQuery</name>
+		<description>The jQuery core. Includes jQuery Migrate.</description>
+		<url>http://www.jquery.com</url>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery Schedule</name>
+		<url>http://plugins.jquery.com/schedule/</url>
+		<description>Query Schedule provides scheduled/deferred actions on DOM elements </description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery Suggest</name>
+		<url>http://polarblau.github.io/suggest/</url>
+		<description>A simple inline autosuggest jQuery plugin</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery Hotkeys</name>
+		<url>https://github.com/jeresig/jquery.hotkeys</url>
+		<description>jQuery Hotkeys lets you watch for keyboard events anywhere in your code supporting almost any key combination.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery Form</name>
+		<url>http://malsup.com/jquery/form/</url>
+		<description>Allows you to easily and unobtrusively upgrade HTML forms to use AJAX.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery Color</name>
+		<url>https://github.com/jquery/jquery-color</url>
+		<description>jQuery plugin for color manipulation and animation support.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery Masonry</name>
+		<url>http://masonry.desandro.com/</url>
+		<description>Masonry is a JavaScript grid layout library.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>Iris</name>
+		<description>A(n awesome) Color Picker</description>
+		<url>https://github.com/automattic/Iris</url>
+		<license>GPL</license>
+	</item>
+	<item>
+		<name>ThickBox</name>
+		<description>ThickBox powers the modal lightboxes used in the WordPress admin, including the post editor's "Media" button (prior to Wordpress 3.5 only) and the "Details" links on the Plugin "Search Results" screen. </description>
+		<url>http://codex.wordpress.org/ThickBox</url>
+		<license>GPL</license>
+	</item>
+	<item>
+		<name>Jcrop</name>
+		<description>Jcrop is the quick and easy way to add image cropping functionality to your web application.</description>
+		<url>http://deepliquid.com/content/Jcrop.html</url>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>MediaElement</name>
+		<description>HTML5 video and audio made easy. One file. Any browser. Same UI. (Included with WP 3.6+ only)</description>
+		<url>http://mediaelementjs.com/</url>
+		<license>MIT</license>
+	</item>
+	
+	<!-- jQuery UI -->
+	<item>
+		<name>jQuery UI Core</name>
+		<url>http://jqueryui.com/</url>
+		<description>jQuery UI is a curated set of user interface interactions, effects, widgets, and themes built on top of the jQuery JavaScript Library.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Widget</name>
+		<url>http://jqueryui.com/widget/</url>
+		<description>Create stateful jQuery plugins using the same abstraction as all jQuery UI widgets.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Mouse</name>
+		<url>http://api.jqueryui.com/mouse/</url>
+		<description>Similar to jQuery.Widget, the mouse interaction is not intended to be used directly. It is purely a base layer for other widgets to inherit from.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Accordion</name>
+		<url>http://jqueryui.com/accordion</url>
+		<description>Displays collapsible content panels for presenting information in a limited amount of space.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Autocomplete</name>
+		<url>http://jqueryui.com/autocomplete</url>
+		<description>Enables users to quickly find and select from a pre-populated list of values as they type, leveraging searching and filtering.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Slider</name>
+		<url>http://jqueryui.com/slider</url>
+		<description>Drag a handle to select a numeric value.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Tabs</name>
+		<url>http://jqueryui.com/tabs</url>
+		<description>A single content area with multiple panels, each associated with a header in a list.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Sortable</name>
+		<url>http://jqueryui.com/sortable</url>
+		<description>Reorder elements in a list or grid using the mouse.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Draggable</name>
+		<url>http://jqueryui.com/draggable/</url>
+		<description>Allow elements to be moved using the mouse.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Droppable</name>
+		<url>http://jqueryui.com/droppable/</url>
+		<description>Create targets for draggable elements.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Selectable</name>
+		<url>http://jqueryui.com/selectable/</url>
+		<description>Use the mouse to select elements, individually or in a group.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Position</name>
+		<url>http://jqueryui.com/position/</url>
+		<description>Position an element relative to the window, document, another element, or the cursor/mouse.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Datepicker</name>
+		<url>http://jqueryui.com/datepicker/</url>
+		<description>Select a date from a popup or inline calendar.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Resizable</name>
+		<url>http://jqueryui.com/resizable/</url>
+		<description>Change the size of an element using the mouse.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Dialog</name>
+		<url>http://jqueryui.com/dialog/</url>
+		<description>Open content in an interactive overlay.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Button</name>
+		<url>http://jqueryui.com/button/</url>
+		<description>Enhances standard form elements like buttons, inputs and anchors to themeable buttons with appropriate hover and active styles.</description>
+		<license>MIT</license>
+	</item>
+	
+	<!-- jQuery effects -->
+	<item>
+		<name>jQuery UI Effects</name>
+		<url>http://api.jqueryui.com/category/effects-core/</url>
+		<description>Functionality provided by jquery.ui.effect.js.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Effects - Blind</name>
+		<url>http://api.jqueryui.com/blind-effect/</url>
+		<description>The blind effect hides or shows an element by wrapping the element in a container, and "pulling the blinds"</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Effects - Bounce</name>
+		<url>http://api.jqueryui.com/bounce-effect/</url>
+		<description>The bounce effect bounces an element. When used with hide or show, the last or first bounce will also fade in/out.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Effects - Clip</name>
+		<url>http://api.jqueryui.com/clip-effect/</url>
+		<description>The clip effect will hide or show an element by clipping the element vertically or horizontally.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Effects - Drop</name>
+		<url>http://api.jqueryui.com/drop-effect/</url>
+		<description>The drop effect hides or shows an element fading in/out and sliding in a direction.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Effects - Explode</name>
+		<url>http://api.jqueryui.com/explode-effect/</url>
+		<description>The explode effect hides or shows an element by splitting it into pieces.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Effects - Fade</name>
+		<url>http://api.jqueryui.com/fade-effect/</url>
+		<description>The fade effect hides or shows an element by fading it.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Effects - Fold</name>
+		<url>http://api.jqueryui.com/fold-effect/</url>
+		<description>The fold effect hides or shows an element by folding it.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Effects - Highlight</name>
+		<url>http://api.jqueryui.com/highlight-effect/</url>
+		<description>The highlight effect hides or shows an element by animating its background color first.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Effects - Pulsate</name>
+		<url>http://api.jqueryui.com/pulsate-effect/</url>
+		<description>The pulsate effect hides or shows an element by pulsing it in or out.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Effects - Scale</name>
+		<url>http://api.jqueryui.com/scale-effect/</url>
+		<description>Shrink or grow an element by a percentage factor.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Effects - Shake</name>
+		<url>http://api.jqueryui.com/shake-effect/</url>
+		<description>Shakes the element multiple times, vertically or horizontally.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Effects - Slide</name>
+		<url>http://api.jqueryui.com/slide-effect/</url>
+		<description>Slides the element out of the viewport.</description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>jQuery UI Effects - Transfer</name>
+		<url>http://api.jqueryui.com/transfer-effect/</url>
+		<description>Transfers the outline of an element to another element.</description>
+		<license>MIT</license>
+	</item>
+	
+	<!-- Group "other" -->
+	<item>
+		<name>Backbone JS</name>
+		<url>http://backbonejs.org/</url>
+		<description>Gives structure to web applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing API over a RESTful JSON interface. </description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>Underscore JS</name>
+		<url>http://underscorejs.org/</url>
+		<description> a utility-belt library for JavaScript that provides a lot of the functional programming support that you would expect in Prototype.js (or Ruby), but without extending any of the built-in JavaScript objects. It's the tie to go along with jQuery's tux, and Backbone.js's suspenders. </description>
+		<license>MIT</license>
+	</item>
+	<item>
+		<name>Simple AJAX Code-kit</name>
+		<url>http://code.google.com/p/tw-sack/</url>
+		<description>A simple set of code to allow you to put AJAX into your webpages with none of the fuss or overhead of other packages.</description>
+	</item>
+</library>
