@@ -23,7 +23,7 @@
 				<?php bloginfo('description'); ?>
 			</div>
 			 <?php do_action('icl_language_selector'); ?>
-			<div class="subscribe"><a href="?page_id=2"><?php echo __('abonnes toi aux reviews', 'wp_deluxe'); ?></a></div>
+			<div class="subscribe"><a href="?page_id=2"><?php echo __('register to the newsletter', 'wp_deluxe'); ?></a></div>
 		</div>
 		<div id="slider">
 			<div id="content_slider">
@@ -65,7 +65,7 @@
 					} 
 					?>
 				</ul>
-				<div class="show_all"><a href="#"><?php echo __('voir toutes les reviews', 'wp_deluxe'); ?></a></div>
+				<div class="show_all"><a href="#"><?php echo __('see all articles', 'wp_deluxe'); ?></a></div>
 			</div>
 		</div>
 	</div>
