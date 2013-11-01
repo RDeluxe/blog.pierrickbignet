@@ -41,11 +41,19 @@
 
 	<div class="news">
 		<?php
-			echo the_content();
+		echo the_content();
+		?>
+		<!-- Displaying the rating of the game at the end of the article, using knob jQuery, and final comments, if a rating is present -->
+		<?php
+			$note = get_post_custom_values("note");
+			if(isset($note[0]))
+			{
+				get_template_part( 'rating-block' );
+			}
 		?>
 	</div>
 	<div class="comments_content">
-		<div class="commenter">Commenter</div>
+		<div class="commenter">Comments</div>
 		<!-- <a href="#"><div class="like">liker</div></a> -->
 		<div class="cb"></div>
 

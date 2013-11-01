@@ -14,6 +14,11 @@
         array( 'jquery' )
     );
     wp_enqueue_script(
+        'knob',
+        get_stylesheet_directory_uri() . '/js/jquery.knob.js',
+        array( 'jquery' )
+    );
+    wp_enqueue_script(
         'hoverdir',
         get_stylesheet_directory_uri() . '/js/jquery.hoverdir.js',
         array( 'jquery' )
