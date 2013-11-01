@@ -24,7 +24,7 @@
 		jQuery(function() {
 			jQuery(".dial").knob({
 				'readOnly' : true,
-				'fgColor' : "#FF8000",
+				'fgColor' : "#3B3B3B",
 				'thickness' : ".3"
 			});
 		});
