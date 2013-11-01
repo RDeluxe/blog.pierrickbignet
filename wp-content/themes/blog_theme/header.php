@@ -8,11 +8,12 @@
   <link href="http://fonts.googleapis.com/css?family=Raleway:300" rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/global.css">
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/zoombox.css">
-  <script src="<?php echo get_template_directory_uri(); ?>/js/jquery-1.9.1.min.js" type="text/javascript"></script>
-  <script src="<?php echo get_template_directory_uri(); ?>/js/zoombox.js" type="text/javascript"></script>
-  <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.hoverdir.js" type="text/javascript"></script>
-  <script src="<?php echo get_template_directory_uri(); ?>/js/modernizr.js" type="text/javascript"></script>
-  <script src="<?php echo get_template_directory_uri(); ?>/js/script.js" type="text/javascript"></script>
+  <!-- This way of importing scripts it not recommended for a theme which may be published. Instead, we use wp_enqueue_scripts with dependencies -->
+  <!-- <script src="<?php echo get_template_directory_uri(); ?>/js/zoombox.js" type="text/javascript"></script> -->
+  <!-- <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.hoverdir.js" type="text/javascript"></script> -->
+  <!-- <script src="<?php echo get_template_directory_uri(); ?>/js/modernizr.js" type="text/javascript"></script> -->
+  <!-- <script src="<?php echo get_template_directory_uri(); ?>/js/script.js" type="text/javascript"></script> -->
+  <?php wp_head(); ?>
 </head>
 <body>
 <div id="screen">

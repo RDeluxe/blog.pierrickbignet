@@ -1,4 +1,32 @@
 <?php
+
+// -----------------------------------------------------------------------------------------------------------------------------
+// We load scripts here instead that in the html <header>
+// -----------------------------------------------------------------------------------------------------------------------------
+  function add_scripts() {
+    wp_enqueue_script(
+        'modernizr',
+        get_stylesheet_directory_uri() . '/js/modernizr.js'
+    );
+    wp_enqueue_script(
+        'zoombox',
+        get_stylesheet_directory_uri() . '/js/zoombox.js',
+        array( 'jquery' )
+    );
+    wp_enqueue_script(
+        'hoverdir',
+        get_stylesheet_directory_uri() . '/js/jquery.hoverdir.js',
+        array( 'jquery' )
+    );
+    wp_enqueue_script(
+        'Theme script',
+        get_stylesheet_directory_uri() . '/js/script.js',
+        array( 'jquery' )
+    );
+  }
+  add_action( 'wp_enqueue_scripts', 'add_scripts' );
+
+
 // -----------------------------------------------------------------------------------------------------------------------------
 // On active les images à la une 
 // -----------------------------------------------------------------------------------------------------------------------------
