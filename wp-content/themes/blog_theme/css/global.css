@@ -4,7 +4,7 @@
 #screen #header #banner {margin:auto; width:1004px; height:65px; border-left:1px solid #dddddd; border-right:1px solid #dddddd; font-family:'Raleway'; text-transform:uppercase;}
 #screen #header #banner .headline { float:left; padding:12px 0px 0px 0px;  margin-left:10px; font-size:17px;}
 #screen #header #banner .headline a.logo {display:block; font-size:33px; color:#010000; text-decoration:none;}
-#screen #header #banner .subscribe a { float:right; padding-top:20px;font-size:14px; width:125px; height:45px; border-left:1px solid #dddddd; text-align:center; color:#010000; text-decoration:none; font-size:14px;  -webkit-transition: all 200ms linear;}
+#screen #header #banner .subscribe a { float:right; padding-top:12px; padding-bottom:8px; font-size:14px; width:125px; height:45px; border-left:1px solid #dddddd; text-align:center; color:#010000; text-decoration:none; font-size:14px;  -webkit-transition: all 200ms linear;}
 #screen #header #banner .subscribe a:hover {background:#0d1622; color:#ffffff; }
 #screen #header #banner #lang_sel { float:right; height:65px; border-left:1px solid #dddddd;}
 #screen #header #banner #lang_sel li { width: 90px;}
