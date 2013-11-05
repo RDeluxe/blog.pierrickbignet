@@ -55,12 +55,12 @@
 	<div class="comments_content">
 		<div class="commenter">Comments</div>
 		<!-- <a href="#"><div class="like">liker</div></a> -->
-		<div class="cb"></div>
+		<div class="clearfix"></div>
 
 		<?php
 			comments_template();
 		?>
-		<div class="cb"></div>
+		<div class="clearfix"></div>
 	</div> 
 </div>
 
