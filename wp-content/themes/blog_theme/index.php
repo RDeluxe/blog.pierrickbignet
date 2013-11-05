@@ -26,7 +26,7 @@
 		</div>
 		<div class="social">
 			<!-- a href="#">18 likes</a> // &nbsp; --><?php comments_number( 'no comments', '1 comment', '% comments' ); ?>
-			<span class="level">level 5</span>
+			<!-- <span class="level">level 5</span> -->
 		</div>
 		<div class="note">
 			<?php
@@ -39,7 +39,7 @@
 		</div>
 	</div>
 
-	<div class="news">
+	<div class="news clearfix">
 		<?php
 			echo the_content();
 		?>
