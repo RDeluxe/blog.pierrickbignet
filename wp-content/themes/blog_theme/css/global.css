@@ -61,9 +61,9 @@
 #screen #news_content .news p.fr, img.alignright {margin:0px 20px 0px 20px; float:right;}
 #screen #news_content .news p.center, img.aligncenter {margin:0px 20px 0px 20px;}
 #screen #news_content .news p, img.aligncenter {margin:10px 20px 0px 20px;}
-#screen #news_content .news h1 {font-family: 'Cambria'; font-size: 32px; margin:15px 15px 25px 15px;}
-#screen #news_content .news h2 {font-family: 'Cambria'; font-size: 24px; margin:10px 10px 20px 10px;}
-#screen #news_content .news h3 {font-family: 'Cambria'; font-size: 16px; margin:8px 8px 16px 8px;}
+#screen #news_content .news h1 {font-family: 'Cambria'; font-size: 8rem; margin:18px;}
+#screen #news_content .news h2 {font-family: 'Cambria'; font-size: 4rem; margin:15px;}
+#screen #news_content .news h3 {font-family: 'Cambria'; font-size: 3rem; margin:10px;}
 #screen #news_content .news ul {list-style: disc; margin:15px 20px 15px 20px;}
 
 #screen #news_content .news #wrap_rating {margin: 25px auto 15px auto ; width:90%; overflow:hidden; border-top-style: solid; border-width: 1px; border-color: #272822}
