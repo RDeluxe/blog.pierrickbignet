@@ -39,7 +39,7 @@
 		</div>
 	</div>
 
-	<div class="news">
+	<div class="news clearfix">
 		<?php
 		echo the_content();
 		?>
