@@ -31,7 +31,7 @@
 				<a href="javascript:void(0);" class="left"></a>
 				<a href="javascript:void(0);" class="right"></a>
 				<div class="inner_slider">
-				<?php 
+				<?php
 					// affichage des images du slider
 					$archive_query = new WP_Query('showposts=1000');
 					while ($archive_query->have_posts()) : $archive_query->the_post();

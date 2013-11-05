@@ -69,6 +69,7 @@
 #screen #news_content .news #wrap_rating #wrap_graph {float:left; width: 25%; margin: auto;}
 #screen #news_content .news #wrap_rating #wrap_pros {float:left; width: 35%;  margin: auto;}
 #screen #news_content .news #wrap_rating #wrap_cons {float:left; width: 35%; margin: auto;}
+#screen #news_content .news #wrap_rating #wrap_cons li, #wrap_pros li {margin-bottom: 5px;}
 
 #screen #pagination { margin:0px auto 0px auto; padding:10px 0px 10px 0px; width:1004px; font-family:'Raleway'; text-align:center;}
 #screen #pagination a {color:#000000; text-decoration:none;}
