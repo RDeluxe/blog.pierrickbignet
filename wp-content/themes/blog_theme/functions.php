@@ -195,3 +195,11 @@ function my_custom_die_handler($message, $title='', $args=array()) {
     _default_wp_die_handler($message, $title, $args);
  }
 }
+
+// -----------------------------------------------------------------------------------------------------------------------------
+//  disable admin bar on front
+// -----------------------------------------------------------------------------------------------------------------------------
+
+
+function my_function_admin_bar(){ return false; }
+add_filter( 'show_admin_bar' , 'my_function_admin_bar');
