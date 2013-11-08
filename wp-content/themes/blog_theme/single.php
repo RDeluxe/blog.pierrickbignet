@@ -1,17 +1,6 @@
 <?php 
 	get_header();
-
 	if(have_posts()) : while( have_posts() ) : the_post();
-	
-	$background = get_post_custom_values("background");
-	if(isset($background[0]))
-	{
-		echo '<style>';
-		echo '#screen {';
-		echo 'background:url("'.$background[0].'") center 345px no-repeat #e7e7e2;';
-		echo '}';
-		echo '</style>';
-	}
  ?>
 <div id="news_content">
 	<div class="block_title">

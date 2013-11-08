@@ -203,3 +203,31 @@ function my_custom_die_handler($message, $title='', $args=array()) {
 
 function my_function_admin_bar(){ return false; }
 add_filter( 'show_admin_bar' , 'my_function_admin_bar');
+
+
+// -----------------------------------------------------------------------------------------------------------------------------
+//  custom background
+// -----------------------------------------------------------------------------------------------------------------------------
+
+function setCustomBackground() {
+
+    if ( is_home() || is_page() ) 
+    {
+        $theme_options = get_option('theme_options'); 
+        $background = $theme_options['background'];
+    }
+    else
+    {
+        $backgroundArray = get_post_custom_values("background");
+        $background = $backgroundArray[0];
+    }
+    $style = '<style type="text/css">';
+    $style .= '#screen {background:url("'.$background.'") center 345px no-repeat #e7e7e2; }';
+    $style .= '</style>';
+
+    echo $style;
+
+}
+add_action('wp_head', 'setCustomBackground');
+
+

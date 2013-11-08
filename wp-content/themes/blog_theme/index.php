@@ -1,18 +1,6 @@
 <?php 
 	get_header();
-
 	if(have_posts()) : while( have_posts() ) : the_post();
-
-  	$theme_options = get_option('theme_options'); 
-	$background = $theme_options['background'];
-	if(isset($background))
-	{
-		echo '<style>';
-		echo '#screen {';
-		echo 'background:url("'.$background.'") center 345px no-repeat #e7e7e2;';
-		echo '}';
-		echo '</style>';
-	}
  ?>
 <div id="news_content">
 	<div class="block_title">
@@ -59,7 +47,4 @@
 	next_posts_link('Older Entries »', 0);
 ?>
 </div>
-<?php
-	get_footer(); 
-	
-?>
+<?php get_footer(); ?>
