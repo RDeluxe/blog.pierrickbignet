@@ -20,7 +20,7 @@
 	<div id="header">
 		<div id="banner">
 			<div class="headline">
-				<h1><a class="logo" href="index.php"><?php bloginfo('name'); ?></a></h1>
+				<h1><a class="logo" href="<?php echo get_home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
 				<?php bloginfo('description'); ?>
 			</div>
 			 <?php do_action('icl_language_selector'); ?>
