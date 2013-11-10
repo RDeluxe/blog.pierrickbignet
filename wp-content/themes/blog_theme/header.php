@@ -24,14 +24,14 @@
 				<?php bloginfo('description'); ?>
 			</div>
 			 <?php do_action('icl_language_selector'); ?>
-			<div class="subscribe"><a href="?page_id=2"><?php echo __('register to the newsletter', 'wp_deluxe'); ?></a></div>
+			<div class="subscribe"><a href="?page_id=2"><?php echo __('subscribe to the newsletter', 'wp_deluxe'); ?></a></div>
 		</div>
 		<div id="slider">
 			<div id="content_slider">
 				<a href="javascript:void(0);" class="left"></a>
 				<a href="javascript:void(0);" class="right"></a>
 				<div class="inner_slider">
-				<?php 
+				<?php
 					// affichage des images du slider
 					$archive_query = new WP_Query('showposts=1000');
 					while ($archive_query->have_posts()) : $archive_query->the_post();

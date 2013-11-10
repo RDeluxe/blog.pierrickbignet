@@ -10,6 +10,19 @@ jQuery(document).ready(function($) {
 
 		$('a.lightbox').zoombox();
 
+		// background management
+		$( window ).scroll(function() {
+			var iScrollTop = $( window ).scrollTop();
+			if(iScrollTop >= 347 && !$('#screen').hasClass('fixed'))
+			{
+				$('#screen').addClass('fixed');
+			}
+			else if(iScrollTop < 347 && $('#screen').hasClass('fixed'))
+			{
+				$('#screen').removeClass('fixed');
+			}
+		});
+
 		// slider
 		var oSlider = $('.inner_slider');
 		var oButtonLeft = $('#content_slider a.left');

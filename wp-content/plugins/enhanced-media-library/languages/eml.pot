@@ -1,0 +1,241 @@
+# Copyright (C) 2013 Enhanced Media Library
+# This file is distributed under the same license as the Enhanced Media Library package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Enhanced Media Library 1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/enhanced-media-library\n"
+"POT-Creation-Date: 2013-11-03 22:01:01+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: core/options-pages.php:15
+msgid "Enhanced Media Library Options"
+msgstr ""
+
+#: core/options-pages.php:16
+msgid "Media Settings"
+msgstr ""
+
+#: core/options-pages.php:24 core/options-pages.php:25
+#: core/options-pages.php:118
+msgid "Taxonomies"
+msgstr ""
+
+#: core/options-pages.php:32 core/options-pages.php:33
+#: core/options-pages.php:387
+msgid "MIME Types"
+msgstr ""
+
+#: core/options-pages.php:66 core/options-pages.php:160
+#: core/options-pages.php:174 core/options-pages.php:238
+#: core/options-pages.php:311
+msgid "Edit"
+msgstr ""
+
+#: core/options-pages.php:67
+msgid "Close"
+msgstr ""
+
+#: core/options-pages.php:68 core/options-pages.php:175
+#: core/options-pages.php:239
+msgid "View"
+msgstr ""
+
+#: core/options-pages.php:69 core/options-pages.php:176
+#: core/options-pages.php:240
+msgid "Update"
+msgstr ""
+
+#: core/options-pages.php:70 core/options-pages.php:177
+#: core/options-pages.php:241
+msgid "Add New"
+msgstr ""
+
+#: core/options-pages.php:71 core/options-pages.php:178
+#: core/options-pages.php:242
+msgid "New"
+msgstr ""
+
+#: core/options-pages.php:72
+msgid "Name"
+msgstr ""
+
+#: core/options-pages.php:73 core/options-pages.php:179
+#: core/options-pages.php:243
+msgid "Parent"
+msgstr ""
+
+#: core/options-pages.php:74 core/options-pages.php:173
+#: core/options-pages.php:237
+msgid "All"
+msgstr ""
+
+#: core/options-pages.php:75 core/options-pages.php:180
+#: core/options-pages.php:244
+msgid "Search"
+msgstr ""
+
+#: core/options-pages.php:77
+msgid ""
+"Taxonomy will be deleted permanently! Your media files will remain intacted, "
+"but all the connections with this taxonomy and its terms will be lost."
+msgstr ""
+
+#: core/options-pages.php:78
+msgid "There is already a taxonomy with the same name. Please chose other one."
+msgstr ""
+
+#: core/options-pages.php:79 core/options-pages.php:225
+msgid "New Taxonomy"
+msgstr ""
+
+#: core/options-pages.php:80
+msgid "Please choose Singular and Plural names for all your new taxomonies."
+msgstr ""
+
+#: core/options-pages.php:81
+msgid "Please choose Singilar name for all your new taxomonies."
+msgstr ""
+
+#: core/options-pages.php:82
+msgid "Please choose Plural Name for all your new taxomonies."
+msgstr ""
+
+#: core/options-pages.php:84
+msgid "Warning! All your custom MIME Types will be deleted by this operation."
+msgstr ""
+
+#: core/options-pages.php:85
+msgid "Please fill into all fields."
+msgstr ""
+
+#: core/options-pages.php:86
+msgid "Duplicate extensions or MIME types. Please chose other one."
+msgstr ""
+
+#: core/options-pages.php:110 core/options-pages.php:378
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: core/options-pages.php:134
+msgid "Media Taxonomies"
+msgstr ""
+
+#: core/options-pages.php:138 core/options-pages.php:287
+msgid "Assign following taxonomies to Media Library:"
+msgstr ""
+
+#: core/options-pages.php:160 core/options-pages.php:311
+msgid "Edit Taxonomy"
+msgstr ""
+
+#: core/options-pages.php:163 core/options-pages.php:227
+msgid "Delete Taxonomy"
+msgstr ""
+
+#: core/options-pages.php:168 core/options-pages.php:232
+msgid "Labels"
+msgstr ""
+
+#: core/options-pages.php:170 core/options-pages.php:234
+msgid "Singular"
+msgstr ""
+
+#: core/options-pages.php:171 core/options-pages.php:235
+msgid "Plural"
+msgstr ""
+
+#: core/options-pages.php:172 core/options-pages.php:236
+msgid "Menu Name"
+msgstr ""
+
+#: core/options-pages.php:185 core/options-pages.php:204
+#: core/options-pages.php:249 core/options-pages.php:314
+msgid "Settings"
+msgstr ""
+
+#: core/options-pages.php:187 core/options-pages.php:251
+msgid "Hierarchical"
+msgstr ""
+
+#: core/options-pages.php:188 core/options-pages.php:252
+msgid "Column in Media Library"
+msgstr ""
+
+#: core/options-pages.php:189 core/options-pages.php:206
+#: core/options-pages.php:253 core/options-pages.php:316
+msgid "Filter in Media Library"
+msgstr ""
+
+#: core/options-pages.php:190 core/options-pages.php:207
+#: core/options-pages.php:254 core/options-pages.php:317
+msgid "Filter in Media Uploader"
+msgstr ""
+
+#: core/options-pages.php:191 core/options-pages.php:255
+msgid "Show in Nav Menu"
+msgstr ""
+
+#: core/options-pages.php:192 core/options-pages.php:256
+msgid "Remember terms order (sort)"
+msgstr ""
+
+#: core/options-pages.php:193 core/options-pages.php:257
+msgid "Slug"
+msgstr ""
+
+#: core/options-pages.php:270
+msgid "Add New Taxonomy"
+msgstr ""
+
+#: core/options-pages.php:283
+msgid "Non-Media Taxonomies"
+msgstr ""
+
+#: core/options-pages.php:388
+msgid "Add New MIME Type"
+msgstr ""
+
+#: core/options-pages.php:406 core/options-pages.php:463
+msgid "Extension"
+msgstr ""
+
+#: core/options-pages.php:407 core/options-pages.php:464
+msgid "MIME Type"
+msgstr ""
+
+#: core/options-pages.php:408 core/options-pages.php:465
+msgid "Singular Label"
+msgstr ""
+
+#: core/options-pages.php:409 core/options-pages.php:466
+msgid "Plural Label"
+msgstr ""
+
+#: core/options-pages.php:410 core/options-pages.php:467
+msgid "Add Filter"
+msgstr ""
+
+#: core/options-pages.php:411 core/options-pages.php:468
+msgid "Allow Upload"
+msgstr ""
+
+#: core/options-pages.php:457
+msgid "Delete MIME Type"
+msgstr ""
+
+#: core/options-pages.php:474
+msgid "Restore default MIME Types"
+msgstr ""
+
+#. Plugin Name
+msgid "Enhanced Media Library"
+msgstr ""
+
+#. Description of the plugin
+msgid "Better management for WordPress Media Library."
+msgstr ""

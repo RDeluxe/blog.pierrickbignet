@@ -1,5 +1,6 @@
 <div id="wrap_rating">
 	<div id="wrap_pros" class='pros'>
+		<h2>Pros</h2>
 		<?php
 		$pros = get_post_custom_values("pros");
 		if(!empty($pros)){
@@ -31,6 +32,7 @@
 		</script>
 	</div>
 	<div id="wrap_cons" class='cons'>
+		<h2>Cons</h2>
 		<?php
 		$cons = get_post_custom_values("cons");
 		if(!empty($cons)){

@@ -1,17 +1,6 @@
 <?php 
 	get_header();
-
 	if(have_posts()) : while( have_posts() ) : the_post();
-
-	$background = get_post_custom_values("background");
-	if(isset($background[0]))
-	{
-		echo '<style>';
-		echo '#screen {';
-		echo 'background:url("'.$background[0].'") center 345px no-repeat #e7e7e2;';
-		echo '}';
-		echo '</style>';
-	}
  ?>
 <div id="news_content">
 	<div class="block_title">
@@ -26,7 +15,7 @@
 		</div>
 		<div class="social">
 			<!-- a href="#">18 likes</a> // &nbsp; --><?php comments_number( 'no comments', '1 comment', '% comments' ); ?>
-			<span class="level">level 5</span>
+			<!-- <span class="level">level 5</span> -->
 		</div>
 		<div class="note">
 			<?php
@@ -39,11 +28,10 @@
 		</div>
 	</div>
 
-	<div class="news">
+	<div class="news clearfix">
 		<?php
 			echo the_content();
 		?>
-
 	</div>
 </div>
 
@@ -58,7 +46,4 @@
 	next_posts_link('Older Entries »', 0);
 ?>
 </div>
-<?php
-	get_footer(); 
-	
-?>
+<?php get_footer(); ?>
