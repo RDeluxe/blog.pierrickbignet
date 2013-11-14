@@ -332,7 +332,7 @@
             </div>
             <div id="enable-theme-editor-height" class="section">
               <div class="section-header">
-                <h3><?php _e('Tab Characters', 'wpeditor'); ?></h3>
+                <h3><?php _e('Editor Height', 'wpeditor'); ?></h3>
               </div>
               <div class="section-body">
                 <ul>
@@ -363,6 +363,25 @@
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will enable a file upload option for the theme editor.<br />Default: Yes", 'wpeditor'); ?></p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div id="enable-theme-create-new" class="section">
+              <div class="section-header">
+                <h3><?php _e('Create New Themes', 'wpeditor'); ?></h3>
+              </div>
+              <div class="section-body">
+                <ul>
+                  <li>
+                    <label for="theme_create_new"><?php _e('Enable Creating Themes:', 'wpeditor'); ?></label>
+                  </li>
+                  <li class="indent">
+                    <input type="radio" name="theme_create_new" value="1" <?php echo (WPEditorSetting::getValue('theme_create_new') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wpeditor'); ?>
+                    <input type="radio" name="theme_create_new" value="0" <?php echo (WPEditorSetting::getValue('theme_create_new') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wpeditor'); ?>
+                  </li>
+                  <li class="indent description">
+                    <p><?php _e("This will allow you to create new themes within the Theme Editor.<br />Default: No", 'wpeditor'); ?></p>
                   </li>
                 </ul>
               </div>
@@ -578,7 +597,7 @@
             </div>
             <div id="enable-plugin-editor-height" class="section">
               <div class="section-header">
-                <h3><?php _e('Tab Characters', 'wpeditor'); ?></h3>
+                <h3><?php _e('Editor Height', 'wpeditor'); ?></h3>
               </div>
               <div class="section-body">
                 <ul>
@@ -609,6 +628,25 @@
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will enable a file upload option for the plugin editor.<br />Default: Yes", 'wpeditor'); ?></p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div id="enable-plugin-create-new" class="section">
+              <div class="section-header">
+                <h3><?php _e('Create New Plugins', 'wpeditor'); ?></h3>
+              </div>
+              <div class="section-body">
+                <ul>
+                  <li>
+                    <label for="plugin_create_new"><?php _e('Enable Creating Plugins:', 'wpeditor'); ?></label>
+                  </li>
+                  <li class="indent">
+                    <input type="radio" name="plugin_create_new" value="1" <?php echo (WPEditorSetting::getValue('plugin_create_new') == 1) ? 'checked="checked"' : ''; ?>> <?php _e('Yes', 'wpeditor'); ?>
+                    <input type="radio" name="plugin_create_new" value="0" <?php echo (WPEditorSetting::getValue('plugin_create_new') != 1) ? 'checked="checked"' : ''; ?>> <?php _e('No', 'wpeditor'); ?>
+                  </li>
+                  <li class="indent description">
+                    <p><?php _e("This will allow you to create new plugins within the Plugin Editor.<br />Default: No", 'wpeditor'); ?></p>
                   </li>
                 </ul>
               </div>
@@ -789,7 +827,7 @@
             </div>
             <div id="enable-post-editor-height" class="section">
               <div class="section-header">
-                <h3><?php _e('Tab Characters', 'wpeditor'); ?></h3>
+                <h3><?php _e('Editor Height', 'wpeditor'); ?></h3>
               </div>
               <div class="section-body">
                 <ul>

@@ -6,6 +6,18 @@ class WPEditorThemes {
       wp_die('<p>' . __('You do not have sufficient permissions to edit templates for this site.', 'wpeditor') . '</p>');
     }
     
+    if(isset($_POST['create_theme_new']) && wp_verify_nonce($_POST['create_theme_new'], 'create_theme_new')) {
+      self::create_new_theme();
+    }
+    
+    if(isset($_POST['download_theme'])) {
+      WPEditorBrowser::download_theme($_POST['file']);
+    }
+    
+    if(isset($_POST['download_theme_file'])) {
+      WPEditorBrowser::download_file($_POST['file_path'], 'theme');
+    }
+    
     if(WP_34) {
       $themes = wp_get_themes();
     }
@@ -22,6 +34,7 @@ class WPEditorThemes {
     }
     if(isset($_REQUEST['file'])) {
       $file = stripslashes($_REQUEST['file']);
+      $theme = $_REQUEST['file'];
     }
     
     if(empty($theme)) {
@@ -120,6 +133,54 @@ class WPEditorThemes {
       'content-type' => 'theme'
     );
     echo WPEditor::getView('views/theme-editor.php', $data);
+  }
+  
+  public static function create_new_theme() {
+    if(current_user_can('edit_themes')) {
+      if(isset($_POST['theme-name']) && $_POST['theme-name'] != '' && isset($_POST['theme-folder']) && $_POST['theme-folder'] != '') {
+        $folder = $_POST['theme-folder'];
+        $file = 'style.css';
+        if(is_writable(get_theme_root())) {
+          $slash = '/';
+          if(WPWINDOWS) {
+            $slash = '\\';
+          }
+          if(!file_exists(get_theme_root() . $slash . $folder)) {
+            if(mkdir(get_theme_root() . $slash . $folder)) {
+              $content = "<?php\n/*\nTheme Name: " . $_POST['theme-name'] . "\n*/";
+              if(file_put_contents(get_theme_root() . $slash . $folder . $slash . $file, $content)) {
+                wp_redirect(admin_url() . 'themes.php?page=wpeditor_themes&create-theme=success&file=' . $folder . $slash . $file);
+                exit;
+              }
+              else {
+                wp_redirect(admin_url() . 'themes.php?page=wpeditor_themes&error=6&create_tab=true');
+                exit;
+              }
+            }
+            else {
+              wp_redirect(admin_url() . 'themes.php?page=wpeditor_themes&error=6&create_tab=true');
+              exit;
+            }
+          }
+          else {
+            wp_redirect(admin_url() . 'themes.php?page=wpeditor_themes&error=6&create_tab=true');
+            exit;
+          }
+        }
+        else {
+          wp_redirect(admin_url() . 'themes.php?page=wpeditor_themes&error=1&create_tab=true');
+          exit;
+        }
+      }
+      else {
+        wp_redirect(admin_url() . 'themes.php?page=wpeditor_themes&error=5&create_tab=true');
+        exit;
+      }
+    }
+    else {
+      wp_redirect(admin_url() . 'themes.php?page=wpeditor_themes&error=1');
+      exit;
+    }
   }
   
   public static function themesHelpTab() {

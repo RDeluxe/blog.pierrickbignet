@@ -7,6 +7,28 @@
       <p><?php _e('<strong>This plugin is currently activated!<br />Warning:</strong> Making changes to active plugins is not recommended.  If your changes cause a fatal error, the plugin will be automatically deactivated.', 'wpeditor'); ?></p>
     </div>
   <?php } ?>
+  <?php if(isset($_GET['create-plugin']) && $_GET['create-plugin'] == 'success'): ?>
+    <div class="updated">
+      <p><?php _e('<strong>Your plugin was successfully created!</strong>', 'wpeditor'); ?></p>
+    </div>
+  <?php endif; ?>
+  <?php if(isset($_GET['error'])): ?>
+    <div class="error">
+      <?php if($_GET['error'] == 1): ?>
+        <p><strong><?php _e('You do not have sufficient permissions to download this plugin.', 'wpeditor'); ?></strong></p>
+      <?php elseif($_GET['error'] == 2): ?>
+        <p><strong><?php _e('There was an error locating the file to download. Please try again later.', 'wpeditor'); ?></strong></p>
+      <?php elseif($_GET['error'] == 3): ?>
+        <p><strong><?php _e('There was an error compressing the plugin files. Please try again later.', 'wpeditor'); ?></strong></p>
+      <?php elseif($_GET['error'] == 4): ?>
+        <p><strong><?php _e('You do not have sufficient permissions to download this file.', 'wpeditor'); ?></strong></p>
+      <?php elseif($_GET['error'] == 5): ?>
+        <p><strong><?php _e('Your plugin details were invalid. Please try again.', 'wpeditor'); ?></strong></p>
+      <?php elseif($_GET['error'] == 6): ?>
+        <p><strong><?php _e('There was an error creating the plugin. Please try again later.', 'wpeditor'); ?></strong></p>
+      <?php endif; ?>
+    </div>
+  <?php endif; ?>
   <div class="fileedit-sub">
     <div class="alignleft">
       <h3>
@@ -106,35 +128,20 @@
       ?>
       <input type="hidden" name="extension" id="extension" value="<?php echo $pathinfo['extension']; ?>" />
     </div>
-    <?php if(is_writable($data['real_file'])): ?>
-      <p class="submit">
-        <?php
-          if(isset($_GET['phperror'])) {
-            echo '<input type="hidden" name="phperror" value="1" />'; ?>
-            <input type="submit" name="submit" class="button-primary" value="<?php _e('Update File and Attempt to Reactivate', 'wpeditor'); ?>" />
-          <?php } else { ?>
-            <input type="submit" name='submit' class="button-primary" value="<?php _e('Update File', 'wpeditor'); ?>" />
-          <?php
-          }
-        ?>
-      </p>
-      <div class="error writable-error" style="display:none;">
-        <p>
-          <em><?php _e('You need to make this file writable before you can save your changes. See <a href="http://codex.wordpress.org/Changing_File_Permissions" target="_blank">the Codex</a> for more information.'); ?></em>
-        </p>
-      </div>
-    <?php else: ?>
-      <p class="submit" style="display:none;">
-        <?php
-          if(isset($_GET['phperror'])) {
-            echo '<input type="hidden" name="phperror" value="1" />'; ?>
-            <input type="submit" name="submit" class="button-primary" value="<?php _e('Update File and Attempt to Reactivate', 'wpeditor'); ?>" />
-          <?php } else { ?>
-            <input type="submit" name='submit' class="button-primary" value="<?php _e('Update File', 'wpeditor'); ?>" />
-          <?php
-          }
-        ?>
-      </p>
+    <p class="submit">
+      <?php if(isset($_GET['phperror'])): ?>
+        <input type="hidden" name="phperror" value="1" />
+        <input type="submit" name="submit" class="button-primary" value="<?php _e('Update File and Attempt to Reactivate', 'wpeditor'); ?>" />
+      <?php else: ?>
+        <input type="submit" name='submit' class="button-primary" value="<?php _e('Update File', 'wpeditor'); ?>" />
+      <?php endif; ?>
+      <?php if(WPEditorSetting::getValue('plugin_create_new')): ?>
+        <input type="button" name="plugin-create-new" class="button-primary plugin-create-new" value="<?php _e('Create New Plugin', 'wpeditor'); ?>" />
+      <?php endif; ?>
+      <input type="button" class="button-secondary download-file" value="<?php _e('Download File', 'wpeditor'); ?>" />
+      <input type="button" class="button-secondary download-plugin" value="<?php _e('Download Plugin', 'wpeditor'); ?>" />
+    </p>
+    <?php if(!is_writable($data['real_file'])): ?>
       <div class="error writable-error">
         <p>
           <em><?php _e('You need to make this file writable before you can save your changes. See <a href="http://codex.wordpress.org/Changing_File_Permissions" target="_blank">the Codex</a> for more information.'); ?></em>
@@ -142,9 +149,77 @@
       </div>
     <?php endif; ?>
   </form>
+  <form name="plugin_create_form" id="plugin_create_form" style="display:none;" action="plugins.php?page=wpeditor_plugin" method="post">
+    <?php wp_nonce_field('create_plugin_new', 'create_plugin_new'); ?>
+    <div>
+      <?php if(is_writable(WP_PLUGIN_DIR)): ?>
+        <table class="form-table">
+          <tbody>
+            <tr valign="top">
+              <th scope="row"><?php _e('Plugin Name', 'wpeditor'); ?></th>
+              <td>
+                <input type="text" name="plugin-name" />
+                <p class="description"><?php _e('Enter the name that you want to use for your new plugin.', 'wpeditor'); ?></p>
+              </td>
+            </tr>
+            <tr valign="top">
+              <th scope="row"><?php _e('Plugin Folder', 'wpeditor'); ?></th>
+              <td>
+                <input type="text" name="plugin-folder" />
+                <p class="description"><?php _e('Enter the folder name that you want to use to create your new plugin. This will be the name of the new folder that is created and added to your plugins directory.', 'wpeditor'); ?></p>
+              </td>
+            </tr>
+            <tr valign="top">
+              <th scope="row"><?php _e('Plugin Filename', 'wpeditor'); ?></th>
+              <td>
+                <input type="text" name="plugin-filename" />
+                <p class="description"><?php _e('Enter the filename that you want to use to create your new plugin. This will be the name of the file that is created and added to the folder specified above.', 'wpeditor'); ?></p>
+              </td>
+            </tr>
+            <tr valign="top">
+              <th scope="row"></th>
+              <td>
+                <?php submit_button(__('Create Plugin', 'wpeditor'), 'primary', 'submit', false); ?>
+                <input type="button" name="cancel-plugin-create" class="cancel-plugin-create button-primary" value="<?php _e('Cancel', 'wpeditor'); ?>" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <?php else: ?>
+        <p><?php _e('Your plugin folder is not writable.  In order to add a new plugin, this folder needs to be writable.', 'wpeditor'); ?></p>
+        <input type="button" name="cancel-plugin-create" class="cancel-plugin-create button-primary" value="<?php _e('Cancel', 'wpeditor'); ?>" />
+      <?php endif; ?>
+    </div>
+  </form>
+  <?php if(isset($_GET['create_tab'])): ?>
+    <script type="text/javascript">
+      (function($){
+        $(document).ready(function() {
+          $('#template_form, #templateside, .updated.below-h2, .fileedit-sub').hide();
+          $('#plugin_create_form').show();
+        })
+      })(jQuery);
+    </script>  
+  <?php endif; ?>
+  <form action="" method="post" id="download_plugin_form">
+    <input type="hidden" name="file" value="<?php echo esc_attr($data['file']); ?>" />
+    <input type="hidden" name="download_plugin" value="true" />
+  </form>
+  <form action="" method="post" id="download_file_form">
+    <input type="hidden" name="file_path" value="<?php echo esc_attr($data['real_file']); ?>" />
+    <input type="hidden" name="download_plugin_file" value="true" />
+  </form>
   <script type="text/javascript">
     (function($){
       $(document).ready(function(){
+        $('.cancel-plugin-create').click(function() {
+          $('#template_form, #templateside, .updated.below-h2, .fileedit-sub').show();
+          $('#plugin_create_form').hide();
+        });
+        $('.plugin-create-new').click(function() {
+          $('#template_form, #templateside, .updated.below-h2, .fileedit-sub').hide();
+          $('#plugin_create_form').show();
+        });
         $('#template_form').submit(function(){ 
           $('#scroll-to').val( $('#new-content').scrollTop() ); 
         });
@@ -152,6 +227,14 @@
         enablePluginAjaxBrowser('<?php echo urlencode((WPWINDOWS) ? str_replace("/", "\\", $data["real_file"]) : $data["real_file"]); ?>');
         runCodeMirror('<?php echo $pathinfo["extension"]; ?>');
         $('.ajax-loader').hide();
+        $('.download-plugin').click(function(e) {
+          e.preventDefault();
+          $('#download_plugin_form').submit();
+        });
+        $('.download-file').click(function(e) {
+          e.preventDefault();
+          $('#download_file_form').submit();
+        });
         $('#plugin_upload_form').submit(function() {
           $('.ajax-loader').show();
           var directory = $('#file_directory').val();

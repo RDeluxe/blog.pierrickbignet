@@ -49,6 +49,7 @@ function toggleFullscreenEditing() {
     editorDiv.height('100%');
     $jq('.CodeMirror-scroll').height(editorDiv.height() - 30);
     editorDiv.width('100%');
+    $jq('#wpe_qt_content_save').show();
     editor.refresh();
   }
   else {
@@ -56,6 +57,7 @@ function toggleFullscreenEditing() {
     editorDiv.height(toggleFullscreenEditing.beforeFullscreen.height);
     $jq('.CodeMirror-scroll').height(toggleFullscreenEditing.beforeFullscreen.scrollHeight);
     editorDiv.width('100%');
+    $jq('#wpe_qt_content_save').hide();
     editor.refresh();
   }
 }

@@ -138,7 +138,7 @@ class WPEditor {
     // Set default admin page roles if there isn't any
     $wpeditor_roles = WPEditorSetting::getValue('admin_page_roles');
     if(empty($wpeditor_roles)){
-      WPEditorSetting::setValue('admin_page_roles',serialize($default_wpeditor_roles));
+      WPEditorSetting::setValue('admin_page_roles', serialize($default_wpeditor_roles));
     }
     // Ensure that all admin page roles have been set.
     else {
@@ -151,7 +151,7 @@ class WPEditor {
         }
       }
       if($update_roles) {
-        WPEditorSetting::setValue('admin_page_roles',serialize($wpeditor_roles));
+        WPEditorSetting::setValue('admin_page_roles', serialize($wpeditor_roles));
       }
       $wpeditor_roles = serialize($wpeditor_roles);
     }
@@ -188,6 +188,13 @@ class WPEditor {
       add_filter('plugin_action_links', array($this, 'replacePluginEditLinks'),9,1);
       
       add_filter('the_editor', array('WPEditorPosts', 'addPostsJquery'));
+      
+      if(!current_user_can('editor') && !current_user_can('administrator')) {
+        global $pagenow;
+        if($pagenow == 'index.php') {
+          add_filter('admin_footer', array('WPEditorPosts', 'addPostsJquery'));
+        }
+      }
       
     }
   }
@@ -249,7 +256,10 @@ class WPEditor {
   
   public static function replacePluginEditLinks($links) {
     $data = '';
-    if(WPEditorSetting::getValue('replace_plugin_edit_links') == 1) {
+    if(isset($_REQUEST['plugin_status']) && in_array($_REQUEST['plugin_status'], array('mustuse', 'dropins'))) {
+      $data = $links;
+    }
+    elseif(WPEditorSetting::getValue('replace_plugin_edit_links') == 1) {
       foreach($links as $key => $value) {
         if($key === 'edit') {
           $value = str_replace('plugin-editor.php?', 'plugins.php?page=wpeditor_plugin&', $value);

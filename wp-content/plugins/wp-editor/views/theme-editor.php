@@ -2,11 +2,35 @@
 <div class="wrap">
   <?php screen_icon(); ?>
   <h2><?php _e('Edit Themes', 'wpeditor'); ?></h2>
-  <?php if(in_array($data['file'], (array) get_option('active_plugins', array()))) { ?>
+  <?php
+  $theme = wp_get_theme();
+  if(is_object($data['wp_theme']) && $data['wp_theme']->name == $theme->name) { ?>
     <div class="updated">
-      <p><?php _e('<strong>This plugin is currently activated!<br />Warning:</strong> Making changes to active plugins is not recommended.  If your changes cause a fatal error, the plugin will be automatically deactivated.', 'wpeditor'); ?></p>
+      <p><?php _e('<strong>This theme is currently activated!<br />Warning:</strong> Making changes to active themes is not recommended.', 'wpeditor'); ?></p>
     </div>
   <?php } ?>
+  <?php if(isset($_GET['create-theme']) && $_GET['create-theme'] == 'success'): ?>
+    <div class="updated">
+      <p><?php _e('<strong>Your theme was successfully created!</strong>', 'wpeditor'); ?></p>
+    </div>
+  <?php endif; ?>
+  <?php if(isset($_GET['error'])): ?>
+    <div class="error">
+      <?php if($_GET['error'] == 1): ?>
+        <p><strong><?php _e('You do not have sufficient permissions to download this plugin.', 'wpeditor'); ?></strong></p>
+      <?php elseif($_GET['error'] == 2): ?>
+        <p><strong><?php _e('There was an error locating the file to download. Please try again later.', 'wpeditor'); ?></strong></p>
+      <?php elseif($_GET['error'] == 3): ?>
+        <p><strong><?php _e('There was an error compressing the plugin files. Please try again later.', 'wpeditor'); ?></strong></p>
+      <?php elseif($_GET['error'] == 4): ?>
+        <p><strong><?php _e('You do not have sufficient permissions to download this file.', 'wpeditor'); ?></strong></p>
+      <?php elseif($_GET['error'] == 5): ?>
+        <p><strong><?php _e('Your theme details were invalid. Please try again.', 'wpeditor'); ?></strong></p>
+      <?php elseif($_GET['error'] == 6): ?>
+        <p><strong><?php _e('There was an error creating the theme. Please try again later.', 'wpeditor'); ?></strong></p>
+      <?php endif; ?>
+    </div>
+  <?php endif; ?>
   <div class="fileedit-sub">
     <div class="alignleft">
       <h3>
@@ -104,7 +128,7 @@
       <input type="hidden" name="action" value="save_files" />
       <input type="hidden" name="_success" id="_success" value="<?php _e('The file has been updated successfully.', 'wpeditor'); ?>" />
       <input type="hidden" id="file" name="file" value="<?php echo esc_attr($data['file']); ?>" />
-      <input type="hidden" id="plugin-dirname" name="theme" value="<?php echo esc_attr($data['theme']); ?>" />
+      <input type="hidden" id="theme-name" name="theme" value="<?php echo esc_attr($data['theme']); ?>" />
       <input type="hidden" id="path" name="path" value="<?php echo esc_attr($data['real_file']); ?>" />
       <input type="hidden" name="scroll_to" id="scroll_to" value="<?php echo $data['scroll_to']; ?>" />
       <input type="hidden" name="content-type" id="content-type" value="<?php echo $data['content-type']; ?>" />
@@ -113,35 +137,20 @@
       ?>
       <input type="hidden" name="extension" id="extension" value="<?php echo $pathinfo['extension']; ?>" />
     </div>
-    <?php if(is_writable($data['real_file'])): ?>
-      <p class="submit">
-        <?php
-          if(isset($_GET['phperror'])) {
-            echo '<input type="hidden" name="phperror" value="1" />'; ?>
-            <input type="submit" name="submit" class="button-primary" value="<?php _e('Update File and Attempt to Reactivate', 'wpeditor'); ?>" />
-          <?php } else { ?>
-            <input type="submit" name='submit' class="button-primary" value="<?php _e('Update File', 'wpeditor'); ?>" />
-          <?php
-          }
-        ?>
-      </p>
-      <div class="error writable-error" style="display:none;">
-        <p>
-          <em><?php _e('You need to make this file writable before you can save your changes. See <a href="http://codex.wordpress.org/Changing_File_Permissions" target="_blank">the Codex</a> for more information.'); ?></em>
-        </p>
-      </div>
-    <?php else: ?>
-      <p class="submit" style="display:none;">
-        <?php
-          if(isset($_GET['phperror'])) {
-            echo '<input type="hidden" name="phperror" value="1" />'; ?>
-            <input type="submit" name="submit" class="button-primary" value="<?php _e('Update File and Attempt to Reactivate', 'wpeditor'); ?>" />
-          <?php } else { ?>
-            <input type="submit" name='submit' class="button-primary" value="<?php _e('Update File', 'wpeditor'); ?>" />
-          <?php
-          }
-        ?>
-      </p>
+    <p class="submit">
+      <?php if(isset($_GET['phperror'])): ?>
+        <input type="hidden" name="phperror" value="1" />
+        <input type="submit" name="submit" class="button-primary" value="<?php _e('Update File and Attempt to Reactivate', 'wpeditor'); ?>" />
+      <?php else: ?>
+        <input type="submit" name='submit' class="button-primary" value="<?php _e('Update File', 'wpeditor'); ?>" />
+      <?php endif; ?>
+      <?php if(WPEditorSetting::getValue('theme_create_new')): ?>
+        <input type="button" name="theme-create-new" class="button-primary theme-create-new" value="<?php _e('Create New Theme', 'wpeditor'); ?>" />
+      <?php endif; ?>
+      <input type="button" class="button-secondary download-file" value="<?php _e('Download File', 'wpeditor'); ?>" />
+      <input type="button" class="button-secondary download-theme" value="<?php _e('Download Theme', 'wpeditor'); ?>" />
+    </p>
+    <?php if(!is_writable($data['real_file'])): ?>
       <div class="error writable-error">
         <p>
           <em><?php _e('You need to make this file writable before you can save your changes. See <a href="http://codex.wordpress.org/Changing_File_Permissions" target="_blank">the Codex</a> for more information.'); ?></em>
@@ -149,9 +158,70 @@
       </div>
     <?php endif; ?>
   </form>
+  <form name="theme_create_form" id="theme_create_form" style="display:none;" action="themes.php?page=wpeditor_themes" method="post">
+    <?php wp_nonce_field('create_theme_new', 'create_theme_new'); ?>
+    <div>
+      <?php if(is_writable(get_theme_root())): ?>
+        <table class="form-table">
+          <tbody>
+            <tr valign="top">
+              <th scope="row"><?php _e('Theme Name', 'wpeditor'); ?></th>
+              <td>
+                <input type="text" name="theme-name" />
+                <p class="description"><?php _e('Enter the name that you want to use for your new theme.', 'wpeditor'); ?></p>
+              </td>
+            </tr>
+            <tr valign="top">
+              <th scope="row"><?php _e('Theme Folder', 'wpeditor'); ?></th>
+              <td>
+                <input type="text" name="theme-folder" />
+                <p class="description"><?php _e('Enter the folder name that you want to use to create your new theme. This will be the name of the new folder that is created and added to your themes directory.', 'wpeditor'); ?></p>
+              </td>
+            </tr>
+            <tr valign="top">
+              <th scope="row"></th>
+              <td>
+                <?php submit_button(__('Create Theme', 'wpeditor'), 'primary', 'submit', false); ?>
+                <input type="button" name="cancel-theme-create" class="cancel-theme-create button-primary" value="<?php _e('Cancel', 'wpeditor'); ?>" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <?php else: ?>
+        <p><?php _e('Your theme folder is not writable.  In order to add a new theme, this folder needs to be writable.', 'wpeditor'); ?></p>
+        <input type="button" name="cancel-theme-create" class="cancel-theme-create button-primary" value="<?php _e('Cancel', 'wpeditor'); ?>" />
+      <?php endif; ?>
+    </div>
+  </form>
+  <?php if(isset($_GET['create_tab'])): ?>
+    <script type="text/javascript">
+      (function($){
+        $(document).ready(function() {
+          $('#template_form, #templateside, .updated.below-h2, .fileedit-sub').hide();
+          $('#theme_create_form').show();
+        })
+      })(jQuery);
+    </script>  
+  <?php endif; ?>
+  <form action="" method="post" id="download_theme_form">
+    <input type="hidden" name="file" value="<?php echo esc_attr($data['file']); ?>" />
+    <input type="hidden" name="download_theme" value="true" />
+  </form>
+  <form action="" method="post" id="download_file_form">
+    <input type="hidden" name="file_path" value="<?php echo esc_attr($data['real_file']); ?>" />
+    <input type="hidden" name="download_theme_file" value="true" />
+  </form>
   <script type="text/javascript">
     (function($){
       $(document).ready(function(){
+        $('.cancel-theme-create').click(function() {
+          $('#template_form, #templateside, .updated.below-h2, .fileedit-sub').show();
+          $('#theme_create_form').hide();
+        });
+        $('.theme-create-new').click(function() {
+          $('#template_form, #templateside, .updated.below-h2, .fileedit-sub').hide();
+          $('#theme_create_form').show();
+        });
         $('#template_form').submit(function(){ 
           $('#scroll-to').val( $('#new-content').scrollTop() ); 
         });
@@ -159,6 +229,14 @@
         enableThemeAjaxBrowser('<?php echo urlencode((WPWINDOWS) ? str_replace("/", "\\", $data["real_file"]) : $data["real_file"]); ?>');
         runCodeMirror('<?php echo $pathinfo["extension"]; ?>');
         $('.ajax-loader').hide();
+        $('.download-theme').click(function(e) {
+          e.preventDefault();
+          $('#download_theme_form').submit();
+        });
+        $('.download-file').click(function(e) {
+          e.preventDefault();
+          $('#download_file_form').submit();
+        });
         $('#theme_upload_form').submit(function() {
           $('.ajax-loader').show();
           var directory = $('#file_directory').val();

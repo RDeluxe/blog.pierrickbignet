@@ -1,0 +1,132 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GA Google Analytics Plugin\n"
+"POT-Creation-Date: 2013-07-05 16:31-0800\n"
+"PO-Revision-Date: 2013-07-05 16:31-0800\n"
+"Last-Translator: Jeff Starr <http://perishablepress.com/contact/>\n"
+"Language-Team: Monzilla Media <http://perishablepress.com/contact/>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.6\n"
+"X-Poedit-KeywordsList: _;__;_e;_n;_x\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../ga-google-analytics.php:21
+msgid "GA Google Analytics"
+msgstr ""
+
+#: ../ga-google-analytics.php:33
+msgid "requires WordPress 3.4 or higher, and has been deactivated!"
+msgstr ""
+
+#: ../ga-google-analytics.php:34
+msgid "Please return to the "
+msgstr ""
+
+#: ../ga-google-analytics.php:34
+msgid "WordPress Admin area"
+msgstr ""
+
+#: ../ga-google-analytics.php:34
+msgid "to upgrade WordPress and try again."
+msgstr ""
+
+#: ../ga-google-analytics.php:68
+msgid "Settings"
+msgstr ""
+
+#: ../ga-google-analytics.php:160
+msgid "Toggle all panels"
+msgstr ""
+
+#: ../ga-google-analytics.php:168
+msgid "Overview"
+msgstr ""
+
+#: ../ga-google-analytics.php:172
+msgid "(GA Plugin) adds Google Analytics Tracking Code to your WordPress site."
+msgstr ""
+
+#: ../ga-google-analytics.php:173
+msgid ""
+"Enter your GA ID, save your options, and done. Log into your Google "
+"Analytics account to view your stats."
+msgstr ""
+
+#: ../ga-google-analytics.php:176
+msgid "To enter your GA ID, visit"
+msgstr ""
+
+#: ../ga-google-analytics.php:176 ../ga-google-analytics.php:188
+msgid "GA Plugin Options"
+msgstr ""
+
+#: ../ga-google-analytics.php:177
+msgid "To restore default settings, visit"
+msgstr ""
+
+#: ../ga-google-analytics.php:177 ../ga-google-analytics.php:210
+msgid "Restore Default Options"
+msgstr ""
+
+#: ../ga-google-analytics.php:178
+msgid "For more information check the <code>readme.txt</code> and"
+msgstr ""
+
+#: ../ga-google-analytics.php:178
+msgid "GA Plugin Homepage"
+msgstr ""
+
+#: ../ga-google-analytics.php:180
+msgid ""
+"Note that it can take 24-48 hours after adding the tracking code before any "
+"analytical data appears in your Google Analytics account. \n"
+"\t\t\t\t\t\t\t\t\t\t\t\tTo check that the GA tacking code is included, look "
+"at the source code of your web page(s). Learn more at the official"
+msgstr ""
+
+#: ../ga-google-analytics.php:190
+msgid "Enter your Tracking Code and enable/disable the plugin."
+msgstr ""
+
+#: ../ga-google-analytics.php:194
+msgid "GA property ID"
+msgstr ""
+
+#: ../ga-google-analytics.php:198
+msgid "Enable Google Analytics"
+msgstr ""
+
+#: ../ga-google-analytics.php:201
+msgid "Include the GA Tracking Code in your web pages?"
+msgstr ""
+
+#: ../ga-google-analytics.php:206 ../ga-google-analytics.php:221
+msgid "Save Settings"
+msgstr ""
+
+#: ../ga-google-analytics.php:214
+msgid "Restore default options upon plugin deactivation/reactivation."
+msgstr ""
+
+#: ../ga-google-analytics.php:218
+msgid ""
+"<strong>Tip:</strong> leave this option unchecked to remember your settings. "
+"Or, to go ahead and restore all default options, check the box, save your "
+"settings, and then deactivate/reactivate the plugin."
+msgstr ""
+
+#: ../ga-google-analytics.php:225
+msgid "Updates &amp; Info"
+msgstr ""
+
+#: ../ga-google-analytics.php:265
+msgid ""
+"Are you sure you want to restore all default options? (this action cannot be "
+"undone)"
+msgstr ""

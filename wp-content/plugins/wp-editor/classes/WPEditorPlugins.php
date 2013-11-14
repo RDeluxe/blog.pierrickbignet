@@ -6,6 +6,18 @@ class WPEditorPlugins {
       wp_die('<p>' . __('You do not have sufficient permissions to edit plugins for this site.', 'wpeditor') . '</p>');
     }
     
+    if(isset($_POST['create_plugin_new']) && wp_verify_nonce($_POST['create_plugin_new'], 'create_plugin_new')) {
+      self::create_new_plugin();
+    }
+    
+    if(isset($_POST['download_plugin'])) {
+      WPEditorBrowser::download_plugin($_POST['file']);
+    }
+    
+    if(isset($_POST['download_plugin_file'])) {
+      WPEditorBrowser::download_file($_POST['file_path'], 'plugin');
+    }
+    
     $plugins = get_plugins();
 
     if(empty($plugins)) {
@@ -76,6 +88,57 @@ class WPEditorPlugins {
       'content-type' => 'plugin'
     );
     echo WPEditor::getView('views/plugin-editor.php', $data);
+  }
+  
+  public static function create_new_plugin() {
+    if(current_user_can('edit_plugins')) {
+      if(isset($_POST['plugin-name']) && $_POST['plugin-name'] != '' && isset($_POST['plugin-folder']) && $_POST['plugin-folder'] != '' && isset($_POST['plugin-filename']) && $_POST['plugin-filename'] != '') {
+        $folder = $_POST['plugin-folder'];
+        $file = $_POST['plugin-filename'];
+        if(substr($file, -4) != '.php') {
+          $file .= '.php';
+        }
+        if(is_writable(WP_PLUGIN_DIR)) {
+          $slash = '/';
+          if(WPWINDOWS) {
+            $slash = '\\';
+          }
+          if(!file_exists(WP_PLUGIN_DIR . $slash . $folder)) {
+            if(mkdir(WP_PLUGIN_DIR . $slash . $folder)) {
+              $content = "<?php\n/*\nPlugin Name: " . $_POST['plugin-name'] . "\n*/";
+              if(file_put_contents(WP_PLUGIN_DIR . $slash . $folder . $slash . $file, $content)) {
+                wp_redirect(admin_url() . 'plugins.php?page=wpeditor_plugin&create-plugin=success&file=' . $folder . $slash . $file);
+                exit;
+              }
+              else {
+                wp_redirect(admin_url() . 'plugins.php?page=wpeditor_plugin&error=6&create_tab=true');
+                exit;
+              }
+            }
+            else {
+              wp_redirect(admin_url() . 'plugins.php?page=wpeditor_plugin&error=6&create_tab=true');
+              exit;
+            }
+          }
+          else {
+            wp_redirect(admin_url() . 'plugins.php?page=wpeditor_plugin&error=6&create_tab=true');
+            exit;
+          }
+        }
+        else {
+          wp_redirect(admin_url() . 'plugins.php?page=wpeditor_plugin&error=1&create_tab=true');
+          exit;
+        }
+      }
+      else {
+        wp_redirect(admin_url() . 'plugins.php?page=wpeditor_plugin&error=5&create_tab=true');
+        exit;
+      }
+    }
+    else {
+      wp_redirect(admin_url() . 'plugins.php?page=wpeditor_plugin&error=1');
+      exit;
+    }
   }
   
   public static function pluginsHelpTab() {

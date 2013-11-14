@@ -2,6 +2,7 @@
 class WPEditorPosts {
   
   public static function addPostsJquery($editor) {
+    global $post;
     if(WPEditorSetting::getValue('enable_post_editor')) {
       $theme = WPEditorSetting::getValue('post_editor_theme') ? WPEditorSetting::getValue('post_editor_theme') : 'default';
       $activeLine = WPEditorSetting::getValue('enable_post_active_line') == 1 ? 'activeline-' . $theme : false;
@@ -17,7 +18,8 @@ class WPEditorPosts {
         'tabSize' => WPEditorSetting::getValue('enable_post_tab_size') ? WPEditorSetting::getValue('enable_post_tab_size') : 4,
         'indentWithTabs' => WPEditorSetting::getValue('enable_post_tab_size') == 'tabs' ? true : false,
         'editorHeight' => WPEditorSetting::getValue('enable_post_editor_height') ? WPEditorSetting::getValue('enable_post_editor_height') : false,
-        'fontSize' => WPEditorSetting::getValue("change_post_editor_font_size") ? WPEditorSetting::getValue("change_post_editor_font_size") . "px" : "12px"
+        'fontSize' => WPEditorSetting::getValue("change_post_editor_font_size") ? WPEditorSetting::getValue("change_post_editor_font_size") . "px" : "12px",
+        'save' => isset($post->post_status) && $post->post_status == 'publish' ? __('Update', 'wpeditor') : __('Save', 'wpeditor')
       );
       WPEditorAdmin::editorStylesheetAndScripts();
       wp_enqueue_script('wp-editor-posts-jquery');

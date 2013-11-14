@@ -368,11 +368,17 @@
  #screen #news_content .news p, img.aligncenter {
     margin:10px 20px 0 20px;
 }
- #screen #news_content .news h1,
- #screen #news_content .news h2,
+ #screen #news_content .news h1{
+     font-family: 'Cambria';
+      font-size: 8rem;
+ }
+ #screen #news_content .news h2 {
+     font-family: 'Cambria';
+      font-size: 4rem;
+ }
  #screen #news_content .news h3 {
      font-family: 'Cambria';
-	 font-size: 8rem;
+      font-size: 3rem;
  }
  #screen #news_content .news h1 {
  	 margin:18px;

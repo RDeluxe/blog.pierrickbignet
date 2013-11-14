@@ -349,4 +349,168 @@ class WPEditorBrowser {
     return $result;
   }
   
+  public static function download_theme($theme_name) {
+    if(current_user_can('edit_themes')) {
+      $slash = '/';
+      if(WPWINDOWS) {
+        $slash = '\\';
+      }
+      $position = strpos($theme_name, $slash);
+      $theme_name = substr($theme_name, 0, $position);
+      $theme = wp_get_theme($theme_name);
+      
+      if($theme->exists()) {
+        $directory = $theme->get_stylesheet_directory() . $slash;
+        $filename = $theme_name . '.zip';
+        // create object
+        $zip = self::compress($directory, $filename);
+        if($zip) {
+          header("Content-Disposition: attachment; filename=\"" . $theme_name . '.zip' . "\"");
+          header('Content-Description: File Transfer');
+          header('Content-Type: application/octet-stream');
+          header('Content-Transfer-Encoding: binary');
+          header('Pragma: public');
+          header('Content-Length: ' . filesize($filename));
+          ob_clean();
+          flush();
+          readfile($filename);
+          unlink($filename);
+          exit;
+        }
+        else {
+          wp_redirect(admin_url('themes.php?page=wpeditor_themes&error=3'));
+          exit;
+        }
+      }
+      else {
+        wp_redirect(admin_url('themes.php?page=wpeditor_themes&error=2'));
+        exit;
+      }
+    }
+    else {
+      wp_redirect(admin_url('themes.php?page=wpeditor_themes&error=1'));
+      exit;
+    }
+  }
+  
+  public static function download_file($file_path, $type) {
+    if(($type == 'theme' && current_user_can('edit_themes')) || ($type == 'plugin' && current_user_can('edit_plugins'))) {
+      $slash = '/';
+      if(WPWINDOWS) {
+        $slash = '\\';
+      }
+      if(file_exists($file_path)) {
+        $content = file_get_contents($file_path);
+        $filename = basename($file_path);
+        $filesize = strlen($content);
+        header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+        header('Content-Description: File Transfer');
+        header("Content-Disposition: attachment; filename=" . $filename);
+        header("Content-Length: " . $filesize);
+        header("Expires: 0");
+        header("Pragma: public");
+        ob_clean();
+        flush();
+        echo $content;
+        exit;
+      }
+      else {
+        if($type == 'theme') {
+          wp_redirect(admin_url('themes.php?page=wpeditor_themes&error=2'));
+          exit;
+        }
+        elseif($type == 'plugin') {
+          wp_redirect(admin_url('plugins.php?page=wpeditor_plugin&error=2'));
+          exit;
+        }
+      }
+    }
+    else {
+      if($type == 'theme') {
+        wp_redirect(admin_url('themes.php?page=wpeditor_themes&error=4'));
+        exit;
+      }
+      elseif($type == 'plugin') {
+        wp_redirect(admin_url('plugins.php?page=wpeditor_plugin&error=4'));
+        exit;
+      }
+    }
+  }
+  
+  public static function download_plugin($plugin_name) {
+    if(current_user_can('edit_plugins')) {
+      $slash = '/';
+      if(WPWINDOWS) {
+        $slash = '\\';
+      }
+      //Get the directory to zip
+      $plugin_name = basename($plugin_name);
+      $position = strpos($plugin_name, '.');
+      $plugin_name = substr($plugin_name, 0, $position);
+      $directory = WP_PLUGIN_DIR . $slash . $plugin_name . $slash;
+      $filename = $plugin_name . '.zip';
+      if(is_dir($directory)) {
+        $zip = self::compress($directory, $filename);
+        if($zip) {
+          header("Content-Disposition: attachment; filename=\"" . $plugin_name . '.zip' . "\"");
+          header('Content-Description: File Transfer');
+          header('Content-Type: application/octet-stream');
+          header('Content-Transfer-Encoding: binary');
+          header('Pragma: public');
+          header('Content-Length: ' . filesize($filename));
+          ob_clean();
+          flush();
+          readfile($filename);
+          unlink($filename);
+          exit;
+        }
+        else {
+          wp_redirect(admin_url('plugins.php?page=wpeditor_plugin&error=3'));
+          exit;
+        }
+      }
+      else {
+        wp_redirect(admin_url('plugins.php?page=wpeditor_plugin&error=2'));
+        exit;
+      }
+    }
+    else {
+      wp_redirect(admin_url('plugins.php?page=wpeditor_plugin&error=1'));
+      exit;
+    }
+  }
+  
+  public static function compress($directory, $filename) {
+    $zip = new ZipArchive();
+    if(!$zip->open($filename, ZIPARCHIVE::CREATE)) {
+      //wp_die('<p>'.__('error ziping files.').'</p><script>alert("'.__('error ziping files. ZipArchive Create Error').'");</script>');
+      //exit;
+    }
+    self::addFilesToZip($directory, $zip);
+    return $zip->close();
+  }
+  
+  public static function addFilesToZip($directory, $zipArchive, $zipdir='') {
+    if(is_dir($directory)) {
+      if($dh = opendir($directory)) {
+        //Add the directory
+        //$zipArchive->addEmptyDir($directory);
+        // Loop through all the files
+        while(($file = readdir($dh)) !== false) {
+          //If it's a folder, run the function again!
+          if(!is_file($directory . $file)) {
+            // Skip parent and root directories
+            if(($file !== ".") && ($file !== "..")) {
+              self::addFilesToZip($directory . $file . "/", $zipArchive, $zipdir . $file . "/");
+            }
+          }
+          else {
+            // Add the files
+            $zipArchive->addFile($directory . $file, $zipdir . $file);
+          }
+        }
+      }
+    }
+  }
+  
 }

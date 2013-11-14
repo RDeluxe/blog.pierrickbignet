@@ -4,7 +4,7 @@ Donate link: http://wpeditor.net/
 Tags: code editor, plugin editor, theme editor, page editor, post editor, pages, posts, html, codemirror, plugins, themes, editor, fancybox, post.php, post-new.php, ajax, syntax highlighting, html syntax highlighting
 Requires at least: 3.0
 Tested up to: 3.6
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -68,6 +68,17 @@ Yes! While we don't have a need for further developers at this time, any financi
 5. Fancybox integration
 
 == Changelog ==
+
+= 1.2.3 =
+* Added ability to create new plugins and themes from inside the plugin/theme editors
+* Added ability to download plugins and themes
+* Added ability to download individual plugin and theme files being edited
+* Added ability to save page/post editor in fullscreen mode
+* Updated width of AJAX Browser in plugin/theme editors
+* Fixed QuickPress editor not working for Author Role
+* Fixed PHP Warning when viewing drop-ins and mustuse plugins
+* Fixed display of warning message for active theme
+* Fixed typos on settings page
 
 = 1.2.2 = 
 * Fixed issues with PHP 5.4+
@@ -138,6 +149,13 @@ Yes! While we don't have a need for further developers at this time, any financi
 * Initial release of WP Editor
 
 == Upgrade Notice ==
+
+= 1.2.3 =
+Added ability to create new plugins and themes from inside the plugin/theme editors
+Added ability to download plugins and themes
+Added ability to download individual plugin and theme files being edited
+Added ability to save page/post editor in fullscreen mode
+Fixed PHP Warning when viewing drop-ins and mustuse plugins
 
 = 1.2.2 = 
 Fixed issues with PHP 5.4+
