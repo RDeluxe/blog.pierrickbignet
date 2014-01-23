@@ -3,13 +3,13 @@ Contributors: webbistro
 Tags: media library, taxonomy, taxonomies, mime, mime type, attachment, media category, media categories, media tag, media tags, media taxonomy, media taxonomies, media filter, media organizer, file types, media types, media uploader, custom, media management, attachment management, files management, ux, user experience, wp-admin, admin
 Requires at least: 3.5
 Tested up to: 3.7.1
-Stable tag: 1.0.1
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 
-Better management for WordPress Media Library
+A better management for WordPress Media Library
 
 
 
@@ -27,14 +27,14 @@ This plugin will be handy for those who need to manage a lot of media files.
 * immediately set taxonomy term to any media file during upload via Media Uploader,
 * filter media files in Media Library by your custom taxonomies, and choose which taxonomies you are willing to use for that filter,
 * filter media files in Media Uploader by your custom taxonomies, and choose which taxonomies you are willing to use for that filter,
-* have you attachment post type's archive page (front-end) working by default,
+* have you attachment post type's archive page (front-end) working by default
 
 = MIME Types =
 
 * create new MIME types (media file types),
 * delete any MIME type,
 * allow/disallow uploading for any MIME type,
-* filter media files by MIME types in Media Library / Media Uploader (for example, PDFs, Documents, V-Cards, etc) 
+* filter media files by MIME types in Media Library / Media Uploader (for example, PDFs, Documents, V-Cards, etc),
 * be in total control of the names of your MIME type filters
 
 = Coming =
@@ -78,6 +78,16 @@ New features and improvements coming...
 
 
 == Changelog ==
+
+= 1.0.3 =
+
+* Update: Better term sorting in Media Uploader
+* Update: Minor code improvements
+* Fixed: The bug with sorting of post categories and tags assigned to Media Library
+
+= 1.0.2 =
+
+* Fix: Assigned non-media taxonomies archive page fixed: [Support Request](http://wordpress.org/support/topic/plugin-woocommerce-products-stopped-displaying)
 
 = 1.0.1 =
 

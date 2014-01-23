@@ -14,17 +14,19 @@
 				var that = this;
 	
 				_.each( that.options.termList || {}, function( term, key ) {
+					var term_id = term['term_id'];
 					var term_name = $("<div/>").html(term['term_name']).text();
-					filters[ key ] = {
+					filters[ term_id ] = {
 						text: term_name,
+						priority: key+2
 					};
-					filters[key]['props'] = {};
-					filters[key]['props'][that.options.taxonomy] = term['term_id'];
+					filters[term_id]['props'] = {};
+					filters[term_id]['props'][that.options.taxonomy] = term_id;
 				});
 				
 				filters.all = {
 					text:  that.options.termListTitle,
-					priority: 10
+					priority: 1
 				};
 				filters['all']['props'] = {};
 				filters['all']['props'][that.options.taxonomy] = 0;

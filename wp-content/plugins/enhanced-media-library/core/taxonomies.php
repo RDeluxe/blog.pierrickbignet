@@ -196,19 +196,27 @@ function wpuxss_eml_restrict_manage_posts()
 		{
 			if ( $wpuxss_eml_taxonomies[$taxonomy->name]['admin_filter'] )
 			{	
-				if ( isset($wp_query->query[$taxonomy->name]) )
+				$selected = 0;
+					
+				foreach ( $wp_query->tax_query->queries as $taxonomy_var )
+				{
+					if ( $taxonomy_var['taxonomy'] == $taxonomy->name && $taxonomy_var['field'] == 'term_id' )
+					{
+						$selected = $taxonomy_var['terms'][0];
+					}
+				}
+				
+				if ( ! $selected && isset($wp_query->query[$taxonomy->name]) ) 
 				{
 					$selected = $wp_query->query[$taxonomy->name];
 				}
 				elseif ( isset($wp_query->query['taxonomy']) && isset($wp_query->query['term']) )
 				{
 					$term = get_term_by( 'slug', $wp_query->query['term'], $taxonomy->name );
-					$selected = $term->term_id;
-				}
-				else 
-				{
-					$selected = 0;
-				}
+					
+					if ( ! empty($term) )
+						$selected = $term->term_id;
+				}		
 					
 				wp_dropdown_categories(
 					array(
@@ -250,10 +258,19 @@ function wpuxss_eml_parse_query($query)
 		
 		foreach ( get_object_taxonomies('attachment','object') as $taxonomy ) 
 		{
-			if ( isset($qv[$taxonomy->name]) && is_numeric($qv[$taxonomy->name]) ) 
+			if ( isset($_REQUEST[$taxonomy->name]) && $_REQUEST[$taxonomy->name] ) 
 			{
-				$term = get_term_by('id', $qv[$taxonomy->name], $taxonomy->name);
-				if ($term) $qv[$taxonomy->name] = $term->slug;
+				switch ($taxonomy->name) {
+					case 'category':
+						$qv['category__in'] = array($_REQUEST[$taxonomy->name]);
+						break;
+					case 'post_tag':
+						$qv['tag__in'] = array($_REQUEST[$taxonomy->name]);
+						break;
+					default:
+						$term = get_term_by('id', $_REQUEST[$taxonomy->name], $taxonomy->name);
+						if ($term) $qv[$taxonomy->name] = $term->slug;
+				} 
 			}
 		}
 	}
@@ -442,7 +459,7 @@ function wpuxss_eml_pre_get_posts( $query )
 	
 	foreach ( $wpuxss_eml_taxonomies as $taxonomy => $params )
 	{
-		if ( $params['assigned'] && $query->is_main_query() && is_tax($taxonomy) && !is_admin() )
+		if ( $params['assigned'] && $params['eml_media'] && $query->is_main_query() && is_tax($taxonomy) && !is_admin() )
 		{
 			$query->set( 'post_status', 'inherit' );
 		}	

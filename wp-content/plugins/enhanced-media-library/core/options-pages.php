@@ -53,11 +53,11 @@ function wpuxss_eml_admin_menu()
 function wpuxss_eml_admin_settings_pages_scripts() 
 {
 	global $wpuxss_eml_version,
-	$wpuxss_plugin_dir;
+	$wpuxss_eml_dir;
 	
 	wp_enqueue_script(
 		'wpuxss-eml-options-script',
-		$wpuxss_plugin_dir . '/js/eml-options.js',
+		$wpuxss_eml_dir . '/js/eml-options.js',
 		array('jquery'),
 		$wpuxss_eml_version,
 		true
@@ -155,7 +155,7 @@ function wpuxss_eml_print_taxonomies_options()
 										
 										$html .= '<li class="' . $li_class . '" id="' . $taxonomy->name . '">';
 											
-										$html .= '<input class="wpuxss-eml-assigned" name="wpuxss_eml_taxonomies[' . $taxonomy->name . '][assigned]" type="checkbox" value="1" ' . checked( true, $assigned, false ) . ' title="Assign Taxonomy" />';
+										$html .= '<input class="wpuxss-eml-assigned" name="wpuxss_eml_taxonomies[' . $taxonomy->name . '][assigned]" type="checkbox" value="1" ' . checked( true, $assigned, false ) . ' title="' . __('Assign Taxonomy','eml') . '" />';
 										$html .= '<input name="wpuxss_eml_taxonomies[' . $taxonomy->name . '][eml_media]" type="hidden" value="' . $eml_media . '" />';
 										$html .= ' <label>' . $taxonomy->label . '</label>';
 										$html .= '<a class="wpuxss-eml-button-edit" title="' . __('Edit Taxonomy','eml') . '" href="javascript:;">' . __('Edit','eml') . ' &darr;</a>';
@@ -221,7 +221,7 @@ function wpuxss_eml_print_taxonomies_options()
 								}
 								
 								$html .= '<li class="wpuxss-eml-clone" style="display:none">';
-								$html .= '<input class="wpuxss-eml-assigned" name="" type="checkbox" class="wpuxss-eml-assigned" value="1" checked="checked" title="Assign Taxonomy" />';
+								$html .= '<input class="wpuxss-eml-assigned" name="" type="checkbox" class="wpuxss-eml-assigned" value="1" checked="checked" title="' . __('Assign Taxonomy','eml') . '" />';
 								$html .= '<input name="" type="hidden" class="wpuxss-eml-eml_media" value="1" />';
 								$html .= ' <label class="wpuxss-eml-taxonomy-label">' . __('New Taxonomy','eml') . '</label>';
 								
@@ -302,7 +302,7 @@ function wpuxss_eml_print_taxonomies_options()
 												if ( $taxonomy->name != 'post_format' )
 												{														
 													$html .= '<li>';
-													$html .= '<input class="wpuxss-eml-assigned" name="wpuxss_eml_taxonomies[' . $taxonomy->name . '][assigned]" type="checkbox" value="1" ' . checked( 1, $wpuxss_eml_taxonomies[$taxonomy->name]['assigned'], false ) . ' title="Assign Taxonomy" />';
+													$html .= '<input class="wpuxss-eml-assigned" name="wpuxss_eml_taxonomies[' . $taxonomy->name . '][assigned]" type="checkbox" value="1" ' . checked( 1, $wpuxss_eml_taxonomies[$taxonomy->name]['assigned'], false ) . ' title="' . __('Assign Taxonomy','eml') . '" />';
 													$html .= '<input name="wpuxss_eml_taxonomies[' . $taxonomy->name . '][eml_media]" type="hidden" value="' . $wpuxss_eml_taxonomies[$taxonomy->name]['eml_media'] . '" />';
 													$html .= '<input name="wpuxss_eml_taxonomies[' . $taxonomy->name . '][show_admin_column]" type="hidden" value="' . $wpuxss_eml_taxonomies[$taxonomy->name]['show_admin_column'] . '" />';
 													$html .= '<input name="wpuxss_eml_taxonomies[' . $taxonomy->name . '][show_in_nav_menus]" type="hidden" value="' . $wpuxss_eml_taxonomies[$taxonomy->name]['show_in_nav_menus'] . '" />';
@@ -438,8 +438,8 @@ function wpuxss_eml_print_mimetypes_options()
 									<td><code><?php echo $mime; ?></code><input type="hidden" class="wpuxss-eml-mime" name="wpuxss_eml_mimes[<?php echo $type; ?>][mime]" value="<?php echo $wpuxss_eml_mimes[$type]['mime']; ?>" /></td>
 									<td><input type="text" name="wpuxss_eml_mimes[<?php echo $type; ?>][singular]" value="<?php echo esc_html($wpuxss_eml_mimes[$type]['singular']); ?>" /></td>
 									<td><input type="text" name="wpuxss_eml_mimes[<?php echo $type; ?>][plural]" value="<?php echo esc_html($wpuxss_eml_mimes[$type]['plural']); ?>" /></td>
-									<td class="checkbox_td"><input type="checkbox" name="wpuxss_eml_mimes[<?php echo $type; ?>][filter]" value="1" <?php checked(1, $wpuxss_eml_mimes[$type]['filter']); ?> /></td>
-									<td class="checkbox_td"><input type="checkbox" name="wpuxss_eml_mimes[<?php echo $type; ?>][upload]" value="1" <?php checked(true, $allowed); ?> /></td>
+									<td class="checkbox_td"><input type="checkbox" name="wpuxss_eml_mimes[<?php echo $type; ?>][filter]" title="<?php _e('Add Filter','eml'); ?>" value="1" <?php checked(1, $wpuxss_eml_mimes[$type]['filter']); ?> /></td>
+									<td class="checkbox_td"><input type="checkbox" name="wpuxss_eml_mimes[<?php echo $type; ?>][upload]" title="<?php _e('Allow Upload','eml'); ?>" value="1" <?php checked(true, $allowed); ?> /></td>
 									<td><a class="wpuxss-eml-button-remove" title="Delete MIME Type" href="javascript:;">&ndash;</a></td>
 									</tr>
 									
@@ -453,8 +453,8 @@ function wpuxss_eml_print_mimetypes_options()
 								<td><input type="text" class="wpuxss-eml-mime" placeholder="image/jpeg" /></td>
 								<td><input type="text" class="wpuxss-eml-singular" placeholder="Image" /></td>
 								<td><input type="text" class="wpuxss-eml-plural" placeholder="Images" /></td>
-								<td class="checkbox_td"><input type="checkbox" class="wpuxss-eml-filter" value="1" /></td>
-								<td class="checkbox_td"><input type="checkbox" class="wpuxss-eml-upload" value="1" /></td>
+								<td class="checkbox_td"><input type="checkbox" class="wpuxss-eml-filter" title="<?php _e('Add Filter','eml'); ?>" value="1" /></td>
+								<td class="checkbox_td"><input type="checkbox" class="wpuxss-eml-upload" title="<?php _e('Allow Upload','eml'); ?>" value="1" /></td>
 								<td><a class="wpuxss-eml-button-remove" title="<?php _e('Delete MIME Type','eml'); ?>" href="javascript:;">&ndash;</a></td>
 							</tr>
 							

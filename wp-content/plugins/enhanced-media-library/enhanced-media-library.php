@@ -2,8 +2,8 @@
 /*
 Plugin Name: Enhanced Media Library
 Plugin URI: http://wordpressuxsolutions.com
-Description: Better management for WordPress Media Library.
-Version: 1.0.1
+Description: This plugin will be handy for those who need to manage a lot of media files.
+Version: 1.0.3
 Author: WordPress UX Solutions
 Author URI: http://wordpressuxsolutions.com
 License: GPLv2 or later
@@ -31,9 +31,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
 
-$wpuxss_eml_version = '1.0.1';
+$wpuxss_eml_version = '1.0.3';
 $wpuxss_eml_old_version = get_option('wpuxss_eml_version', false);
-$wpuxss_plugin_dir = plugin_dir_url( __FILE__ );
+$wpuxss_eml_dir = plugin_dir_url( __FILE__ );
 
 
 
@@ -180,12 +180,12 @@ add_action( 'admin_init', 'wpuxss_eml_on_admin_init' );
 function wpuxss_eml_on_admin_init() 
 {	
 	global $wpuxss_eml_version,
-	$wpuxss_plugin_dir;
+	$wpuxss_eml_dir;
 	
 	// plugin scripts
 	wp_enqueue_script(
 		'wpuxss-eml-media-uploader-script',
-		$wpuxss_plugin_dir . '/js/eml-media-uploader.js',
+		$wpuxss_eml_dir . '/js/eml-media-uploader.js',
 		array('backbone'),
 		$wpuxss_eml_version,
 		true
@@ -194,7 +194,7 @@ function wpuxss_eml_on_admin_init()
 	// admin styles
 	wp_enqueue_style( 
 		'wpuxss-eml-admin-custom-style', 
-		$wpuxss_plugin_dir . '/css/eml-admin.css',
+		$wpuxss_eml_dir . '/css/eml-admin.css',
 		array(), 
 		$wpuxss_eml_version,
 		'all' 
@@ -217,6 +217,7 @@ function wpuxss_eml_on_admin_init()
 			
 				wp_terms_checklist( 0, array( 'taxonomy' => $taxonomy->name, 'checked_ontop' => false, 'walker' => new Walker_Media_Taxonomy_Uploader_Filter() ) );
 				
+				$html = '';
 				if ( ob_get_contents() != false )
 					$html = ob_get_contents();
 			
