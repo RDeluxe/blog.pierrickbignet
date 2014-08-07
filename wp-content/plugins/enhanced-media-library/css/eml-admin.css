@@ -11,7 +11,12 @@
 	border-radius: 3px;
 	padding: 10px 10px 5px;
 	margin: 0 0 10px;
-	font-size: 11px;
+}
+.term-list li {
+	line-height: 22px;
+}
+.term-list li input[type="checkbox"] {
+	margin: -4px 4px 0 0 !important;
 }
 .term-list .children {
 	margin: 5px 0 0 20px;
@@ -21,27 +26,56 @@
 /* == Taxonomy Filters == */
 
 .media-frame select[class^="attachment"] {
-	margin-top: 11px;
-	margin-right: 10px;
-	max-width: 140px;
-}
-
-.media-frame .search {
-	line-height: 14px;
+	margin-top: 11px !important;
+	margin-right: 10px !important;
+	max-width: 140px !important;
 }
 
 
 /* == Media Uploader Boxes' Positions == */
 
 .attachments-browser .media-toolbar {
-	height: 80px;
+	height: auto;
+	position: relative;
+	margin-right: 300px;
+}
+.attachments-browser .media-toolbar-primary,
+.attachments-browser .media-toolbar-secondary {
+	float: none;
+	height: auto;
+}
+.attachments-browser .media-toolbar-secondary select,
+.attachments-browser .media-toolbar-secondary .instructions {
+	float: left;
+}
+.media-frame .spinner {
+	float: none;
+	position: absolute;
+	z-index: 100;
+	top: 0;
+	right: 10px;
 }
 
-.attachments-browser .attachments {
-	top: 80px;
+@media only screen and (max-width: 900px) 
+{
+	.attachments-browser .media-toolbar {
+		margin-right: 180px;
+		height: auto;
+	}
 }
-.attachments-browser .media-toolbar-secondary {
-	width:75%;
+
+@media only screen and (max-width: 640px), screen and (max-height: 400px)
+{
+	.attachments-browser .attachments {
+		top: 20px;
+	}
+	.media-frame .attachments-browser {
+		padding-bottom: 20px;
+		height: auto;
+	}
+	.media-sidebar .attachment-details h3 {
+		margin-top: 24px;
+	}
 }
 
 
@@ -144,8 +178,6 @@
 .wpuxss-eml-taxonomy-edit .wpuxss-eml-labels-edit input {
 	min-width: 150px;
 }
-
-
 
 
 /* == Buttons Styles == */

@@ -307,6 +307,10 @@
  #screen #news_content .news p.bold {
      font-weight:bold;
 }
+ #screen #news_content .news p.strong {
+     font-weight:bold;
+}
+
  #screen #news_content .news p.italic {
      font-style:italic;
 }

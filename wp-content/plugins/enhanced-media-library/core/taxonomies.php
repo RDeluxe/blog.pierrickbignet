@@ -134,34 +134,37 @@ function wpuxss_eml_ajax_query_attachments()
 		wp_send_json_error();
 
 	$taxonomies = get_object_taxonomies('attachment','names');
-	$valid = array('s', 'order', 'orderby', 'posts_per_page', 'paged', 'post_mime_type','post_parent', 'post__in', 'post__not_in');
-	$valid = array_merge($valid,$taxonomies);
 
 	$query = isset( $_REQUEST['query'] ) ? (array) $_REQUEST['query'] : array();
-	$query = array_intersect_key( $query, array_flip( $valid ) );
+
+	$defaults = array(
+		's', 'order', 'orderby', 'posts_per_page', 'paged', 'post_mime_type',
+		'post_parent', 'post__in', 'post__not_in'
+	);
+	$query = array_intersect_key( $query, array_flip( array_merge($defaults, $taxonomies) ) );
 
 	$query['post_type'] = 'attachment';
 	$query['post_status'] = 'inherit';
-	
 	if ( current_user_can( get_post_type_object( 'attachment' )->cap->read_private_posts ) )
 		$query['post_status'] .= ',private';
 		
 	$query['tax_query'] = array( 'relation' => 'AND' );
-		
+
 	foreach ( $taxonomies as $taxonomy ) 
 	{		
-		if ( isset($query[$taxonomy]) && is_numeric($query[$taxonomy]) && $query[$taxonomy] != 0 ) 
+		
+		if ( isset($query[$taxonomy]) && is_numeric($query[$taxonomy]) ) 
 		{
 			array_push($query['tax_query'],array(
-					'taxonomy' => $taxonomy,
-					'field' => 'id',
-					'terms' => $query[$taxonomy]
-				));
-			
-			unset ( $query[$taxonomy] );
+				'taxonomy' => $taxonomy,
+				'field' => 'id',
+				'terms' => $query[$taxonomy]
+			));	
 		}
+		unset ( $query[$taxonomy] );
 	}
-		
+
+	$query = apply_filters( 'ajax_query_attachments_args', $query );
 	$query = new WP_Query( $query );
 
 	$posts = array_map( 'wp_prepare_attachment_for_js', $query->posts );
@@ -196,27 +199,16 @@ function wpuxss_eml_restrict_manage_posts()
 		{
 			if ( $wpuxss_eml_taxonomies[$taxonomy->name]['admin_filter'] )
 			{	
-				$selected = 0;
+				$selected = 0;				
 					
 				foreach ( $wp_query->tax_query->queries as $taxonomy_var )
-				{
-					if ( $taxonomy_var['taxonomy'] == $taxonomy->name && $taxonomy_var['field'] == 'term_id' )
+				{					
+					if ( $taxonomy_var['taxonomy'] == $taxonomy->name && $taxonomy_var['field'] == 'slug' )
 					{
-						$selected = $taxonomy_var['terms'][0];
+						$term = get_term_by('slug', $taxonomy_var['terms'][0], $taxonomy->name);
+						if ($term) $selected = $term->term_id;
 					}
 				}
-				
-				if ( ! $selected && isset($wp_query->query[$taxonomy->name]) ) 
-				{
-					$selected = $wp_query->query[$taxonomy->name];
-				}
-				elseif ( isset($wp_query->query['taxonomy']) && isset($wp_query->query['term']) )
-				{
-					$term = get_term_by( 'slug', $wp_query->query['term'], $taxonomy->name );
-					
-					if ( ! empty($term) )
-						$selected = $term->term_id;
-				}		
 					
 				wp_dropdown_categories(
 					array(
@@ -226,8 +218,8 @@ function wpuxss_eml_restrict_manage_posts()
 						'orderby'         =>  'name',
 						'selected'        =>  $selected,
 						'hierarchical'    =>  true,
-						'depth'           =>  3,
 						'show_count'      =>  false,
+						'hide_empty'      =>  false,
 						'hide_if_empty'   =>  true
 					)
 				);
@@ -258,19 +250,35 @@ function wpuxss_eml_parse_query($query)
 		
 		foreach ( get_object_taxonomies('attachment','object') as $taxonomy ) 
 		{
-			if ( isset($_REQUEST[$taxonomy->name]) && $_REQUEST[$taxonomy->name] ) 
+			if ( isset( $qv['taxonomy']) && isset($qv['term'] ) )
 			{
-				switch ($taxonomy->name) {
-					case 'category':
-						$qv['category__in'] = array($_REQUEST[$taxonomy->name]);
-						break;
-					case 'post_tag':
-						$qv['tag__in'] = array($_REQUEST[$taxonomy->name]);
-						break;
-					default:
-						$term = get_term_by('id', $_REQUEST[$taxonomy->name], $taxonomy->name);
-						if ($term) $qv[$taxonomy->name] = $term->slug;
-				} 
+				$tax = $qv['taxonomy'];
+				
+				if ( $tax == 'category' )
+					$tax = 'category_name';
+					
+				if ( $tax == 'post_tag' )
+					$tax = 'tag';					
+				
+				$qv[$tax] = $qv['term'];
+				unset($qv['taxonomy']);
+				unset($qv['term']);
+			}
+			
+			if ( isset($_REQUEST[$taxonomy->name]) && $_REQUEST[$taxonomy->name] && is_numeric($_REQUEST[$taxonomy->name]) ) 
+			{
+				$tax = $taxonomy->name;
+				
+				if ( $tax == 'category' )
+					$tax = 'category_name';
+					
+				if ( $tax == 'post_tag' )
+					$tax = 'tag'; 
+				
+				$term = get_term_by('id', $_REQUEST[$taxonomy->name], $taxonomy->name);
+				
+				if ($term) 
+					$qv[$tax] = $term->slug;
 			}
 		}
 	}
@@ -327,8 +335,6 @@ function wpuxss_eml_attachment_fields_to_edit( $form_fields, $post )
 			
 			ob_end_clean();
 			
-			$html .= '<input type="hidden" class="text" id="attachments-'.$post->ID.'-'.$taxonomy.'" name="attachments['.$post->ID.']['.$taxonomy.']" value="'.$t['value'].'">';
-			
 			$t['input'] = 'html';
 			$t['html'] = $html; 
 		}
@@ -375,13 +381,10 @@ class Walker_Media_Taxonomy_Checklist extends Walker
 		if ( empty($taxonomy) )
 			$taxonomy = 'category';
 
-		if ( $taxonomy == 'category' )
-			$name = 'post_category';
-		else
-			$name = 'tax_input['.$taxonomy.']';
+		$name = 'tax_input['.$taxonomy.']';
 
 		$class = in_array( $category->term_id, $popular_cats ) ? ' class="popular-category"' : '';
-		$output .= "\n<li id='{$taxonomy}-{$category->term_id}'$class>" . '<label class="selectit"><input value="' . $category->slug . '" type="checkbox" name="'.$name.'[]" id="in-'.$taxonomy.'-' . $category->term_id . '"' . checked( in_array( $category->term_id, $selected_cats ), true, false ) . disabled( empty( $args['disabled'] ), false, false ) . ' /> ' . esc_html( apply_filters('the_category', $category->name )) . '</label>';
+		$output .= "\n<li id='{$taxonomy}-{$category->term_id}'$class>" . '<label class="selectit"><input value="' . $category->slug . '" type="checkbox" name="'.$name.'['. $category->slug.']" id="in-'.$taxonomy.'-' . $category->term_id . '"' . checked( in_array( $category->term_id, $selected_cats ), true, false ) . disabled( empty( $args['disabled'] ), false, false ) . ' /> ' . esc_html( apply_filters('the_category', $category->name )) . '</label>';
 	}
 
 	function end_el( &$output, $category, $depth = 0, $args = array() ) 
@@ -420,23 +423,78 @@ class Walker_Media_Taxonomy_Uploader_Filter extends Walker
 	function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) 
 	{
 		extract($args);
-		
-		if ( empty($taxonomy) )
-			$taxonomy = 'category';
 
-		if ( $taxonomy == 'category' )
-			$name = 'post_category';
-		else
-			$name = 'tax_input['.$taxonomy.']';
-
-		$indent = str_repeat('&nbsp;&nbsp;&nbsp;', $depth);
+		$indent = str_repeat('&nbsp;&nbsp;&nbsp;', $depth); 
 		$output .= $category->term_id . '>' . $indent . esc_html( apply_filters('the_category', $category->name )) . '|';
 	}
 
 	function end_el( &$output, $category, $depth = 0, $args = array() ) 
 	{
-		$output .= "";
+			$output .= "";
 	}
+}
+
+
+
+
+
+/** 
+ *  wpuxss_eml_save_attachment_compat
+ *
+ *  Based on /wp-admin/includes/ajax-actions.php
+ *
+ *  @since    1.0.6
+ *  @created  06/14/14
+ */
+
+add_action( 'wp_ajax_save-attachment-compat', 'wpuxss_eml_save_attachment_compat', 0 );
+
+function wpuxss_eml_save_attachment_compat() 
+{	
+	if ( ! isset( $_REQUEST['id'] ) )
+		wp_send_json_error();
+
+	if ( ! $id = absint( $_REQUEST['id'] ) )
+		wp_send_json_error();
+
+	if ( empty( $_REQUEST['attachments'] ) || empty( $_REQUEST['attachments'][ $id ] ) )
+		wp_send_json_error();
+	$attachment_data = $_REQUEST['attachments'][ $id ];
+
+	check_ajax_referer( 'update-post_' . $id, 'nonce' );
+
+	if ( ! current_user_can( 'edit_post', $id ) )
+		wp_send_json_error();
+
+	$post = get_post( $id, ARRAY_A );
+
+	if ( 'attachment' != $post['post_type'] )
+		wp_send_json_error();
+
+	/** This filter is documented in wp-admin/includes/media.php */
+	$post = apply_filters( 'attachment_fields_to_save', $post, $attachment_data );
+
+	if ( isset( $post['errors'] ) ) {
+		$errors = $post['errors']; // @todo return me and display me!
+		unset( $post['errors'] );
+	}
+
+	wp_update_post( $post );
+
+	foreach ( get_attachment_taxonomies( $post ) as $taxonomy ) 
+	{		
+		if ( isset( $attachment_data[ $taxonomy ] ) )
+			wp_set_object_terms( $id, array_map( 'trim', preg_split( '/,+/', $attachment_data[ $taxonomy ] ) ), $taxonomy, false );
+		else if ( isset($_REQUEST['tax_input']) && isset( $_REQUEST['tax_input'][ $taxonomy ] ) )
+			wp_set_object_terms( $id, $_REQUEST['tax_input'][ $taxonomy ], $taxonomy, false );
+		else 
+			wp_set_object_terms( $id, '', $taxonomy, false );
+	}
+
+	if ( ! $attachment = wp_prepare_attachment_for_js( $id ) )
+		wp_send_json_error();
+	
+	wp_send_json_success( $attachment );
 }
 
 
@@ -451,18 +509,22 @@ class Walker_Media_Taxonomy_Uploader_Filter extends Walker
  *  @created  03/08/13
  */
 
-add_action( 'pre_get_posts', 'wpuxss_eml_pre_get_posts' );
+add_action( 'pre_get_posts', 'wpuxss_eml_pre_get_posts', 99 );
 
 function wpuxss_eml_pre_get_posts( $query )
 {
 	$wpuxss_eml_taxonomies = get_option('wpuxss_eml_taxonomies');
 	
-	foreach ( $wpuxss_eml_taxonomies as $taxonomy => $params )
+	if ( is_array($wpuxss_eml_taxonomies) )
 	{
-		if ( $params['assigned'] && $params['eml_media'] && $query->is_main_query() && is_tax($taxonomy) && !is_admin() )
+		foreach ( $wpuxss_eml_taxonomies as $taxonomy => $params )
 		{
-			$query->set( 'post_status', 'inherit' );
-		}	
+			if ( $params['assigned'] && $params['eml_media'] && $query->is_main_query() && is_tax($taxonomy) && !is_admin() )
+			{
+				$query->set( 'post_type', 'attachment' );
+				$query->set( 'post_status', 'inherit' );
+			}	
+		}
 	}
 }
 

@@ -17,6 +17,7 @@ class WPEditorPosts {
         'lookupWord' => __('Enter a word to look up:', 'wpeditor'),
         'tabSize' => WPEditorSetting::getValue('enable_post_tab_size') ? WPEditorSetting::getValue('enable_post_tab_size') : 4,
         'indentWithTabs' => WPEditorSetting::getValue('enable_post_tab_size') == 'tabs' ? true : false,
+        'indentUnit' => WPEditorSetting::getValue('post_indent_unit') == '' ? 2 : WPEditorSetting::getValue('post_indent_unit'),
         'editorHeight' => WPEditorSetting::getValue('enable_post_editor_height') ? WPEditorSetting::getValue('enable_post_editor_height') : false,
         'fontSize' => WPEditorSetting::getValue("change_post_editor_font_size") ? WPEditorSetting::getValue("change_post_editor_font_size") . "px" : "12px",
         'save' => isset($post->post_status) && $post->post_status == 'publish' ? __('Update', 'wpeditor') : __('Save', 'wpeditor')

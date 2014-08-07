@@ -8,7 +8,7 @@ class WPEditorSetting {
     if(!empty($key)) {
       $dbKey = $wpdb->get_var("SELECT `key` from $settingsTable where `key`='$key'");
       if($dbKey) {
-        if(!empty($value)) {
+        if(!empty($value) || $value !== 0) {
           $wpdb->update($settingsTable, 
             array('key'=>$key, 'value'=>$value),
             array('key'=>$key),
@@ -21,7 +21,7 @@ class WPEditorSetting {
         }
       }
       else {
-        if(!empty($value)) {
+        if(!empty($value) || $value !== 0) {
           $wpdb->insert($settingsTable, 
             array('key'=>$key, 'value'=>$value),
             array('%s', '%s')
@@ -33,6 +33,7 @@ class WPEditorSetting {
   }
   
   public static function getValue($key, $entities=false) {
+    $value = false;
     global $wpdb;
     $settingsTable = WPEditor::getTableName('settings');
     $value = $wpdb->get_var("SELECT `value` from $settingsTable where `key`='$key'");
@@ -41,7 +42,7 @@ class WPEditorSetting {
       $value = htmlentities($value);
     }
     
-    return empty($value) ? false : $value;
+    return $value;
   }
   
 }

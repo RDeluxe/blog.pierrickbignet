@@ -150,6 +150,7 @@ function toggleFullscreenEditing() {
                 $('#new-content').val(result.content);
                 $('#file').val(result.file);
                 $('#path').val(result.path);
+                $('#file_path').val(result.path);
                 $('#extension').val(result.extension);
                 $('.current_file').html(result.file + notWritable);
                 runCodeMirror(result.extension);

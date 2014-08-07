@@ -6,7 +6,7 @@
 	Author: Jeff Starr
 	Author URI: http://monzilla.biz/
 	Donate link: http://m0n.co/donate
-	Version: 20131107
+	Version: 20140123
 	License: GPL v2
 	Usage: Visit the "Google Analytics" options page to enter your GA ID and done.
 	Tags: analytics, ga, google, google analytics, tracking, statistics, stats
@@ -18,11 +18,11 @@ if (!defined('ABSPATH')) die();
 
 // i18n
 function gap_i18n_init() {
-	load_plugin_textdomain('gap', false, dirname(plugin_basename(__FILE__)) . '/languages');
+	load_plugin_textdomain('gap', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 }
 add_action('plugins_loaded', 'gap_i18n_init');
 
-$gap_version = '20131107';
+$gap_version = '20140123';
 $gap_plugin  = __('GA Google Analytics', 'gap');
 $gap_options = get_option('gap_options');
 $gap_path    = plugin_basename(__FILE__); // 'ga-google-analytics/ga-google-analytics.php';

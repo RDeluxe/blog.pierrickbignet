@@ -57,7 +57,7 @@ function wpuxss_eml_admin_settings_pages_scripts()
 	
 	wp_enqueue_script(
 		'wpuxss-eml-options-script',
-		$wpuxss_eml_dir . '/js/eml-options.js',
+		$wpuxss_eml_dir . 'js/eml-options.js',
 		array('jquery'),
 		$wpuxss_eml_version,
 		true

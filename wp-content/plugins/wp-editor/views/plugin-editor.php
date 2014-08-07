@@ -206,7 +206,7 @@
     <input type="hidden" name="download_plugin" value="true" />
   </form>
   <form action="" method="post" id="download_file_form">
-    <input type="hidden" name="file_path" value="<?php echo esc_attr($data['real_file']); ?>" />
+    <input type="hidden" name="file_path" id="file_path" value="<?php echo esc_attr($data['real_file']); ?>" />
     <input type="hidden" name="download_plugin_file" value="true" />
   </form>
   <script type="text/javascript">
@@ -307,7 +307,9 @@
         <?php } 
         if(WPEditorSetting::getValue('enable_plugin_line_wrapping')) { ?>
           lineWrapping: true,
-        <?php }
+        <?php } ?>
+        indentUnit: <?php echo WPEditorSetting::getValue('plugin_indent_unit') == '' ? 2 : WPEditorSetting::getValue('plugin_indent_unit'); ?>,
+        <?php
         if(WPEditorSetting::getValue('enable_plugin_tab_characters') && WPEditorSetting::getValue('enable_plugin_tab_characters') == 'tabs') { ?>
           indentWithTabs: true,
         <?php }

@@ -218,6 +218,8 @@
                     <label class="checkbox_label"><?php _e('.pot', 'wpeditor'); ?></label>
                     <input type="checkbox" name="theme_editor_allowed_extensions[]" value="less" <?php echo in_array('less', $allowed_extensions) ? 'checked="checked"' : '' ?>>
                     <label class="checkbox_label"><?php _e('.less', 'wpeditor'); ?></label>
+                    <input type="checkbox" name="theme_editor_allowed_extensions[]" value="xml" <?php echo in_array('xml', $allowed_extensions) ? 'checked="checked"' : '' ?>>
+                    <label class="checkbox_label"><?php _e('.xml', 'wpeditor'); ?></label>
                   </li>
                   <li class="indent description">
                     <p><?php _e('Select which extensions you would like the theme editor browser to be able to access.', 'wpeditor'); ?></p>
@@ -235,7 +237,7 @@
                     <label for="change_theme_editor_font_size"><?php _e('Change Font Size:', 'wpeditor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="change_theme_editor_font_size" value="<?php echo WPEditorSetting::getValue('change_theme_editor_font_size') ? WPEditorSetting::getValue('change_theme_editor_font_size') : 12; ?>" />
+                    <input class="small-text" name="change_theme_editor_font_size" value="<?php echo WPEditorSetting::getValue('change_theme_editor_font_size'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the font size in pixels for the theme editor.<br />Default: 12", 'wpeditor'); ?></p>
@@ -300,6 +302,24 @@
                 </ul>
               </div>
             </div>
+            <div id="theme-indent-unit" class="section">
+              <div class="section-header">
+                <h3><?php _e('Indent Size', 'wpeditor'); ?></h3>
+              </div>
+              <div class="section-body">
+                <ul>
+                  <li>
+                    <label for="theme_indent_unit"><?php _e('Indent Size:', 'wpeditor'); ?></label>
+                  </li>
+                  <li class="indent">
+                    <input class="small-text" name="theme_indent_unit" value="<?php echo WPEditorSetting::getValue('theme_indent_unit'); ?>" />
+                  </li>
+                  <li class="indent description">
+                    <p><?php _e("This will set the size of the indent.<br />Default: 2", 'wpeditor'); ?></p>
+                  </li>
+                </ul>
+              </div>
+            </div>
             <div id="enable-theme-tab-characters" class="section">
               <div class="section-header">
                 <h3><?php _e('Tab Characters', 'wpeditor'); ?></h3>
@@ -322,7 +342,7 @@
                     <label for="enable_theme_tab_size"><?php _e('Tab Size:', 'wpeditor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="enable_theme_tab_size" value="<?php echo WPEditorSetting::getValue('enable_theme_tab_size') ? WPEditorSetting::getValue('enable_theme_tab_size') : 2; ?>" />
+                    <input class="small-text" name="enable_theme_tab_size" value="<?php echo WPEditorSetting::getValue('enable_theme_tab_size'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the tab size for the theme editor.<br />Default: 2", 'wpeditor'); ?></p>
@@ -340,7 +360,7 @@
                     <label for="enable_theme_editor_height"><?php _e('Editor Height:', 'wpeditor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="enable_theme_editor_height" value="<?php echo WPEditorSetting::getValue('enable_theme_editor_height') ? WPEditorSetting::getValue('enable_theme_editor_height') : 450; ?>" />
+                    <input class="small-text" name="enable_theme_editor_height" value="<?php echo WPEditorSetting::getValue('enable_theme_editor_height'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the height in pixels for the theme editor.<br />Default: 450", 'wpeditor'); ?></p>
@@ -483,6 +503,8 @@
                     <label class="checkbox_label"><?php _e('.pot', 'wpeditor'); ?></label>
                     <input type="checkbox" name="plugin_editor_allowed_extensions[]" value="less" <?php echo in_array('less', $allowed_extensions) ? 'checked="checked"' : '' ?>>
                     <label class="checkbox_label"><?php _e('.less', 'wpeditor'); ?></label>
+                    <input type="checkbox" name="plugin_editor_allowed_extensions[]" value="xml" <?php echo in_array('xml', $allowed_extensions) ? 'checked="checked"' : '' ?>>
+                    <label class="checkbox_label"><?php _e('.xml', 'wpeditor'); ?></label>
                   </li>
                   <li class="indent description">
                     <p><?php _e('Select which extensions you would like the plugin editor browser to be able to access.', 'wpeditor'); ?></p>
@@ -500,7 +522,7 @@
                     <label for="change_plugin_editor_font_size"><?php _e('Change Font Size:', 'wpeditor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="change_plugin_editor_font_size" value="<?php echo WPEditorSetting::getValue('change_plugin_editor_font_size') ? WPEditorSetting::getValue('change_plugin_editor_font_size') : 12; ?>" />
+                    <input class="small-text" name="change_plugin_editor_font_size" value="<?php echo WPEditorSetting::getValue('change_plugin_editor_font_size'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the font size in pixels for the plugin editor.<br />Default: 12", 'wpeditor'); ?></p>
@@ -565,6 +587,24 @@
                 </ul>
               </div>
             </div>
+            <div id="plugin-indent-unit" class="section">
+              <div class="section-header">
+                <h3><?php _e('Indent Size', 'wpeditor'); ?></h3>
+              </div>
+              <div class="section-body">
+                <ul>
+                  <li>
+                    <label for="plugin_indent_unit"><?php _e('Indent Size:', 'wpeditor'); ?></label>
+                  </li>
+                  <li class="indent">
+                    <input class="small-text" name="plugin_indent_unit" value="<?php echo WPEditorSetting::getValue('plugin_indent_unit'); ?>" />
+                  </li>
+                  <li class="indent description">
+                    <p><?php _e("This will set the size of the indent.<br />Default: 2", 'wpeditor'); ?></p>
+                  </li>
+                </ul>
+              </div>
+            </div>
             <div id="enable-plugin-tab-characters" class="section">
               <div class="section-header">
                 <h3><?php _e('Tab Characters', 'wpeditor'); ?></h3>
@@ -587,7 +627,7 @@
                     <label for="enable_plugin_tab_size"><?php _e('Tab Size:', 'wpeditor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="enable_plugin_tab_size" value="<?php echo WPEditorSetting::getValue('enable_plugin_tab_size') ? WPEditorSetting::getValue('enable_plugin_tab_size') : 2; ?>" />
+                    <input class="small-text" name="enable_plugin_tab_size" value="<?php echo WPEditorSetting::getValue('enable_plugin_tab_size'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the tab size for the plugin editor.<br />Default: 2", 'wpeditor'); ?></p>
@@ -605,7 +645,7 @@
                     <label for="enable_plugin_editor_height"><?php _e('Editor Height:', 'wpeditor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="enable_plugin_editor_height" value="<?php echo WPEditorSetting::getValue('enable_plugin_editor_height') ? WPEditorSetting::getValue('enable_plugin_editor_height') : 450; ?>" />
+                    <input class="small-text" name="enable_plugin_editor_height" value="<?php echo WPEditorSetting::getValue('enable_plugin_editor_height'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the height in pixels for the plugin editor.<br />Default: 450", 'wpeditor'); ?></p>
@@ -730,7 +770,7 @@
                     <label for="change_post_editor_font_size"><?php _e('Change Font Size:', 'wpeditor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="change_post_editor_font_size" value="<?php echo WPEditorSetting::getValue('change_post_editor_font_size') ? WPEditorSetting::getValue('change_post_editor_font_size') : 12; ?>" />
+                    <input class="small-text" name="change_post_editor_font_size" value="<?php echo WPEditorSetting::getValue('change_post_editor_font_size'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the font size in pixels for the post editor.<br />Default: 12", 'wpeditor'); ?></p>
@@ -795,6 +835,24 @@
                 </ul>
               </div>
             </div>
+            <div id="post-indent-unit" class="section">
+              <div class="section-header">
+                <h3><?php _e('Indent Size', 'wpeditor'); ?></h3>
+              </div>
+              <div class="section-body">
+                <ul>
+                  <li>
+                    <label for="post_indent_unit"><?php _e('Indent Size:', 'wpeditor'); ?></label>
+                  </li>
+                  <li class="indent">
+                    <input class="small-text" name="post_indent_unit" value="<?php echo WPEditorSetting::getValue('post_indent_unit'); ?>" />
+                  </li>
+                  <li class="indent description">
+                    <p><?php _e("This will set the size of the indent.<br />Default: 2", 'wpeditor'); ?></p>
+                  </li>
+                </ul>
+              </div>
+            </div>
             <div id="enable-post-tab-characters" class="section">
               <div class="section-header">
                 <h3><?php _e('Tab Characters', 'wpeditor'); ?></h3>
@@ -817,7 +875,7 @@
                     <label for="enable_post_tab_size"><?php _e('Tab Size:', 'wpeditor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="enable_post_tab_size" value="<?php echo WPEditorSetting::getValue('enable_post_tab_size') ? WPEditorSetting::getValue('enable_post_tab_size') : 2; ?>" />
+                    <input class="small-text" name="enable_post_tab_size" value="<?php echo WPEditorSetting::getValue('enable_post_tab_size'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the tab size for the post editor.<br />Default: 2", 'wpeditor'); ?></p>
@@ -835,7 +893,7 @@
                     <label for="enable_post_editor_height"><?php _e('Editor Height:', 'wpeditor'); ?></label>
                   </li>
                   <li class="indent">
-                    <input class="small-text" name="enable_post_editor_height" value="<?php echo WPEditorSetting::getValue('enable_post_editor_height') ? WPEditorSetting::getValue('enable_post_editor_height') : 450; ?>" />
+                    <input class="small-text" name="enable_post_editor_height" value="<?php echo WPEditorSetting::getValue('enable_post_editor_height'); ?>" />
                   </li>
                   <li class="indent description">
                     <p><?php _e("This will set the height in pixels for the post editor.<br />Default: 450", 'wpeditor'); ?></p>

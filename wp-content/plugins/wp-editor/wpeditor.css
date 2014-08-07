@@ -213,6 +213,9 @@ li.indent {
 #plugin-editor-files .plugin-folders ul li.less, #theme-editor-files .theme-folders ul li.less {
   background:url('images/less.png') 0px 0px no-repeat;
 }
+#plugin-editor-files .plugin-folders ul li.xml, #theme-editor-files .theme-folders ul li.xml {
+  background:url('images/xml.png') 0px 0px no-repeat;
+}
 #plugin-editor-files .plugin-folders ul li.png, #theme-editor-files .theme-folders ul li.png {
   background:url('images/png.png') 0px 0px no-repeat;
 }
@@ -352,3 +355,20 @@ a.donate, a.support {
   font-family:Arial, Helvetica, 'sans-serif normal';
 }
 #templateside { margin-left: 20px; width: 300px; }
+.quicktags-toolbar input {
+  margin: 2px 1px 4px;
+  line-height: 18px;
+  display: inline-block;
+  min-width: 26px;
+  padding: 2px 4px;
+  font: 12px/18px "Open Sans", sans-serif;
+  color: #464646;
+  cursor: pointer;
+  border: 1px solid #c3c3c3;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: #eee;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#e3e3e3), to(#fff));
+  background-image: -webkit-linear-gradient(bottom, #e3e3e3, #fff);
+  background-image: linear-gradient(to top, #e3e3e3, #fff);
+}

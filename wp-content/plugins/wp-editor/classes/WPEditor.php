@@ -95,12 +95,12 @@ class WPEditor {
     
     // Check if the default allowed extensions for the plugin editor have been set and set if not
     if(!WPEditorSetting::getValue('plugin_editor_allowed_extensions')) {
-      WPEditorSetting::setValue('plugin_editor_allowed_extensions', 'php~js~css~txt~htm~html~jpg~jpeg~png~gif~sql~po~less');
+      WPEditorSetting::setValue('plugin_editor_allowed_extensions', 'php~js~css~txt~htm~html~jpg~jpeg~png~gif~sql~po~less~xml');
     }
     
     // Check if the default allowed extensions for the theme editor have been set and set if not
     if(!WPEditorSetting::getValue('theme_editor_allowed_extensions')) {
-      WPEditorSetting::setValue('theme_editor_allowed_extensions', 'php~js~css~txt~htm~html~jpg~jpeg~png~gif~sql~po~less');
+      WPEditorSetting::setValue('theme_editor_allowed_extensions', 'php~js~css~txt~htm~html~jpg~jpeg~png~gif~sql~po~less~xml');
     }
     
     // Check if the upload plugin file option has been set and set if not
@@ -111,6 +111,21 @@ class WPEditor {
     // Check if the upload theme file option has been set and set if not
     if(!WPEditorSetting::getValue('theme_file_upload')) {
       WPEditorSetting::setValue('theme_file_upload', 1);
+    }
+    
+    // Check if the plugin indent unit option has been set and set if not
+    if(!WPEditorSetting::getValue('plugin_indent_unit')) {
+      WPEditorSetting::setValue('plugin_indent_unit', 2);
+    }
+    
+    // Check if the theme indent unit option has been set and set if not
+    if(!WPEditorSetting::getValue('theme_indent_unit')) {
+      WPEditorSetting::setValue('theme_indent_unit', 2);
+    }
+    
+    // Check if the post indent unit option has been set and set if not
+    if(!WPEditorSetting::getValue('post_indent_unit')) {
+      WPEditorSetting::setValue('post_indent_unit', 2);
     }
     
   }

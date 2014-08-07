@@ -208,7 +208,7 @@
     <input type="hidden" name="download_theme" value="true" />
   </form>
   <form action="" method="post" id="download_file_form">
-    <input type="hidden" name="file_path" value="<?php echo esc_attr($data['real_file']); ?>" />
+    <input type="hidden" name="file_path" id="file_path" value="<?php echo esc_attr($data['real_file']); ?>" />
     <input type="hidden" name="download_theme_file" value="true" />
   </form>
   <script type="text/javascript">
@@ -306,7 +306,9 @@
         <?php
         if(WPEditorSetting::getValue('enable_theme_line_numbers')) { ?>
           lineNumbers: true,
-        <?php } 
+        <?php } ?>
+          indentUnit: <?php echo WPEditorSetting::getValue('theme_indent_unit') == '' ? 2 : WPEditorSetting::getValue('theme_indent_unit'); ?>,
+        <?php
         if(WPEditorSetting::getValue('enable_theme_line_wrapping')) { ?>
           lineWrapping: true,
         <?php }

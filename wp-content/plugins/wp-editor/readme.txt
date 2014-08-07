@@ -3,8 +3,8 @@ Contributors: benjaminprojas
 Donate link: http://wpeditor.net/
 Tags: code editor, plugin editor, theme editor, page editor, post editor, pages, posts, html, codemirror, plugins, themes, editor, fancybox, post.php, post-new.php, ajax, syntax highlighting, html syntax highlighting
 Requires at least: 3.0
-Tested up to: 3.6
-Stable tag: 1.2.3
+Tested up to: 3.9.1
+Stable tag: 1.2.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -68,6 +68,20 @@ Yes! While we don't have a need for further developers at this time, any financi
 5. Fancybox integration
 
 == Changelog ==
+
+= 1.2.5.1 =
+* Fixed javascript error that broke the editors
+
+= 1.2.5 =
+* Added the ability to change the indent size
+* Fixed javascript error when clicking preview in posts view
+* Fixed file download not working on all plugin/theme files
+* Fixed missing CSS styles for quicktags
+
+= 1.2.4 =
+* Added ability to edit .xml files
+* Fixed font issue in fullscreen mode
+* Fixed fullscreen save not working
 
 = 1.2.3 =
 * Added ability to create new plugins and themes from inside the plugin/theme editors
@@ -149,6 +163,20 @@ Yes! While we don't have a need for further developers at this time, any financi
 * Initial release of WP Editor
 
 == Upgrade Notice ==
+
+= 1.2.5.1 =
+Fixed javascript error that broke the editors
+
+= 1.2.5 =
+Added the ability to change the indent size
+Fixed javascript error when clicking preview in posts view
+Fixed file download not working on all plugin/theme files
+Fixed missing CSS styles for quicktags
+
+= 1.2.4 =
+Added ability to edit .xml files
+Fixed font issue in fullscreen mode
+Fixed fullscreen save not working
 
 = 1.2.3 =
 Added ability to create new plugins and themes from inside the plugin/theme editors
