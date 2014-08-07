@@ -13,3 +13,4 @@ wp-content/backups/
 sitemap.xml.gz
 githook.php
 shares/
+wp-snapshots/
