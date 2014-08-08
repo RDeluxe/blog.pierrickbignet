@@ -180,7 +180,7 @@
      margin:auto;
      overflow:hidden;
 }
- #screen #header #slider-single #content_slider .left, #screen #header #content_slider .right {
+ #screen #header #slider-single #content_slider .left, #screen #header  #slider-single #content_slider .right {
      position:absolute;
      z-index:1;
      display:block;
@@ -189,7 +189,7 @@
      opacity:0.5;
      -webkit-transition: all 200ms linear;
 }
- #screen #header #slider-single #content_slider .left:hover, #screen #header #content_slider .right:hover {
+ #screen #header #slider-single #content_slider .left:hover, #screen #header  #slider-single #content_slider .right:hover {
      opacity:0.8;
 }
  #screen #header #slider-single #content_slider .left {
