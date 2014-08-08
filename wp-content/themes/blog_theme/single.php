@@ -20,12 +20,12 @@
 			<!-- <a href="#">18 likes</a> // &nbsp; --><?php comments_number( 'no comments', '1 comment', '% comments' ); ?>
 			<!-- <span class="level">level 5</span> -->
 		</div>
-		<div class="note">
+		<div id="scoreBar" class="note">
 			<?php
 				$note = get_post_custom_values("note");
 				if(isset($note[0]))
 				{
-					echo the_author_meta('nickname')."'s verdict <span class='note'>".$note[0]." / 100</span>";
+					echo the_author_meta('nickname')."'s verdict <span class='note' score='".$note[0]."'>".$note[0]." / 100</span>";
 				}
 			?>
 		</div>

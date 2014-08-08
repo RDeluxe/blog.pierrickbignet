@@ -414,7 +414,10 @@
      color:#ffffff;
      font-size:11px;
      text-transform:uppercase;
-     background:#2782d7;
+     background: -webkit-linear-gradient(left, #2782d7 100%, white 50%);
+     background: -moz-linear-gradient(left, #2782d7 100%, white 50%);
+     background: -ms-linear-gradient(left, #2782d7 100%, white 50%);
+     background: linear-gradient(left, #2782d7 100%, white 50%);
 }
  #screen #news_content .block_title .social span, #screen #news_content .block_title .note span {
      padding:0;

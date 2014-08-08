@@ -185,5 +185,20 @@ jQuery(document).ready(function($) {
 			showAllCat(iTileSize);
 		});
 
+
+		/*
+		* Changing the 'note' div background
+		 */
+		var score = $('.note span').attr('score');
+		$('#scoreBar').css({
+    background: "-webkit-linear-gradient(left, #2782d7 "+score+"%, white 50%)"
+		});
+
+		if(score < 90) {
+			$('.note span').css({
+				color: "#2782d7"
+			});
+		}
+
 	});
 });
