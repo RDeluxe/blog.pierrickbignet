@@ -1,14 +1,17 @@
-<?php 
+<?php
 	get_header();
 	if(have_posts()) : while( have_posts() ) : the_post();
  ?>
+<div id="news_header_picture">
+
+</div>
 <div id="news_content">
 	<div class="block_title">
 		<div class="title">
 			<?php edit_post_link(''); ?>
 			<a href="<?php the_permalink() ?>">
-				<?php 
-					echo the_title(); 
+				<?php
+					echo the_title();
 				?>
 			</a>
 			<div class="date"><?php the_time('j F Y') ?></div>
@@ -50,12 +53,12 @@
 			comments_template();
 		?>
 		<div class="clearfix"></div>
-	</div> 
+	</div>
 </div>
 
-<?php	
+<?php
 	endwhile;
 	endif;
 
-	get_footer(); 
+	get_footer();
 ?>

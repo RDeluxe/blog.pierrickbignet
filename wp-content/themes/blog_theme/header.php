@@ -45,7 +45,7 @@
 			 				<span class="comments"><?php comments_number( 'no comments', '1 comment', '% comments' ); ?></span>
 			 			</div>
 			 		</a>
-			
+
 				<?php endwhile; ?>
 				</div>
 			</div>
@@ -60,10 +60,10 @@
 					  'order' => 'ASC'
 					  );
 					$categories=get_categories($args);
-					foreach($categories as $category) 
-					{ 
+					foreach($categories as $category)
+					{
 					    echo '<li><a class="'.$category->name.'" href="javascript:void(0);">'.$category->name.'</a></li> ';
-					} 
+					}
 					?>
 				</ul>
 				<div class="show_all"><a href="#"><?php echo __('see all articles', 'wp_deluxe'); ?></a></div>

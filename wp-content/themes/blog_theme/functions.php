@@ -29,12 +29,22 @@ include 'admin/theme-options.php';
         get_stylesheet_directory_uri() . '/js/script.js',
         array( 'jquery' )
     );
+/*    wp_enqueue_script(
+        'TweenMax',
+        'http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js',
+        array( 'jquery' )
+    );
+    wp_enqueue_script(
+        'ScrollToPlugin',
+        'http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js',
+        array( 'jquery' )
+    );*/
   }
   add_action( 'wp_enqueue_scripts', 'add_scripts' );
 
 
 // -----------------------------------------------------------------------------------------------------------------------------
-// On active les images à la une 
+// On active les images à la une
 // -----------------------------------------------------------------------------------------------------------------------------
 add_theme_support('post-thumbnails');
 
@@ -59,7 +69,7 @@ add_filter('the_content', 'filter_ptags_on_images');
 function deluxe_comment( $comment, $args, $depth ) {
     // on compte les commentaires pour mettre une classe particuliere a la premiere.
 	static $count = 1;
-	if($count == 1) 
+	if($count == 1)
 	{
 		echo '<div class="comment first">';
 	}
@@ -72,15 +82,15 @@ function deluxe_comment( $comment, $args, $depth ) {
         <?php
 
             // on affiche le nickname si il est renseigné sinon son nom d'utilisateur (+lien vers son site, le truc par defaut quoi)
-            if ($comment->user_id) 
+            if ($comment->user_id)
             {
                 $user=get_userdata($comment->user_id);
                 echo $user->user_nicename;
-            } 
-            else 
-            { 
-                comment_author_link(); 
-            } 
+            }
+            else
+            {
+                comment_author_link();
+            }
         ?>
         <span> - <?php echo get_comment_date(); ?></span></div>
 		<div class="text"><?php comment_text(); ?></div>
@@ -211,9 +221,9 @@ add_filter( 'show_admin_bar' , 'my_function_admin_bar');
 
 function setCustomBackground() {
 
-    if ( is_home() || is_page() ) 
+    if ( is_home() || is_page() )
     {
-        $theme_options = get_option('theme_options'); 
+        $theme_options = get_option('theme_options');
         $background = $theme_options['background'];
     }
     else
@@ -222,7 +232,7 @@ function setCustomBackground() {
         $background = $backgroundArray[0];
     }
     $style = '<style type="text/css">';
-    $style .= '#screen {background:url("'.$background.'") center 345px no-repeat #e7e7e2; }';
+    $style .= '#news_header_picture {background:url("'.$background.'") center no-repeat #e7e7e2; }';
     $style .= '</style>';
 
     echo $style;

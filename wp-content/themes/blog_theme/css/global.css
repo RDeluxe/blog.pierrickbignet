@@ -5,11 +5,15 @@
      background-attachment: fixed;
      background-position:top center;
 }
+
+/*Header*/
  #screen #header {
      width:100%;
      height:349px;
      background:#f1f1f1;
 }
+
+/*Banner*/
  #screen #header #banner {
      margin:auto;
      width:1004px;
@@ -212,9 +216,21 @@
      border-bottom:1px solid #0d1622;
      border-left:1px solid #0d1622;
 }
+
+
+#screen #news_header_picture {
+     height: 46.25em;
+     width: 100%;
+     position: absolute;
+     z-index: 0;
+}
+
+/*News content*/
  #screen #news_content {
      margin:80px auto 0 auto;
      width:1004px;
+     position: relative;
+     z-index: 1;
 }
  #screen #news_content .block_title .title {
     font-family:'Raleway';
