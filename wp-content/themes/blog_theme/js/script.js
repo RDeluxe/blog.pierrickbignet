@@ -3,14 +3,14 @@ jQuery(document).ready(function($) {
     // and other libraries also using $ will not be accessible under this shortcut
 
     $(document).ready(function() {
-		// tiles  
+		// tiles
 		$('.inner_slider > a ').each( function(){
 			$(this).hoverdir();
 		});
 
 		$('a.lightbox').zoombox();
 
-		// background management
+		// background management (not useful for now)
 		$( window ).scroll(function() {
 			var iScrollTop = $( window ).scrollTop();
 			if(iScrollTop >= 347 && !$('#screen').hasClass('fixed'))
@@ -27,8 +27,8 @@ jQuery(document).ready(function($) {
 		var oSlider = $('.inner_slider');
 		var oButtonLeft = $('#content_slider a.left');
 		var oButtonRight = $('#content_slider a.right');
-		
-		var iTileSize = 251;
+		var iTileSizeIndex = 250;
+		var iTileSizeSingle = 150;
 		var iMarginLeft = 0;
 		var iNbTiles = $('.inner_slider a').length;
 
@@ -40,9 +40,9 @@ jQuery(document).ready(function($) {
 
 		// click button right (todo: change 6 by the number of tile in the slider, it depends on the screen size)
 		oButtonRight.click(function(){
-			if(iMarginLeft < iTileSize*(iNbTiles-iNbtiles))
+			if(iMarginLeft < iTileSizeIndex*(iNbTiles-iNbtiles))
 			{
-				iMarginLeft += iTileSize;
+				iMarginLeft += iTileSizeIndex;
 				oSlider.animate({
 					marginLeft: -(iMarginLeft)
 				}, 250);
@@ -53,18 +53,19 @@ jQuery(document).ready(function($) {
 		oButtonLeft.click(function(){
 			if(iMarginLeft > 0)
 			{
-				iMarginLeft -= iTileSize
+				iMarginLeft -= iTileSizeIndex
 				oSlider.animate({
 					marginLeft: -(iMarginLeft)
 				}, 250);
 			}
-		});	
+		});
 
-		// menu 
-		$('#content_menu li a').click(function(){
-			var sClassBtn = $(this).attr('class');
+		// Filter the slider pictures by category. Size needs to be set.
+		var filterCat = function(div, sizePict) {
+			var sClassBtn = div.attr('class');
 			if(sClassBtn != undefined)
 			{
+				console.log("LOL");
 				$('.inner_slider a').each(function(i, elem){
 					var oElem = $(elem);
 					if(!oElem.hasClass(sClassBtn))
@@ -80,28 +81,48 @@ jQuery(document).ready(function($) {
 					{
 						oElem.removeClass('hidden');
 						oElem.animate({
-							width: 250,
+							width: sizePict,
 							opacity: 1
-						}, 300);					
+						}, 300);
 					}
 				});
 			}
+		}
+
+		// Index slider filterCat
+		$('#content_menu_index li a').click(function(){
+			filterCat($(this),iTileSizeIndex);
 		});
 
-		// show all button
-		$('.show_all a').click(function(){
+		// Single page slider filterCat
+		$('#content_menu_single li a').click(function(){
+			filterCat($(this),iTileSizeSingle);
+		});
+
+		// Show all button
+		var showAllCat = function (sizePict) {
 			$('.inner_slider a').each(function(i, elem){
 				var oElem = $(elem);
 				if(oElem.hasClass('hidden'))
 				{
 					oElem.removeClass('hidden');
 					oElem.animate({
-						width: 250,
+						width: sizePict,
 						opacity: 1
-					}, 300);					
+					}, 300);
 				}
 			});
-		});
-	});
+		}
 
+		// Index showAll Cat
+		$('#content_menu_index .show_all a').click(function(){
+			showAllCat(iTileSizeIndex);
+		});
+
+		// Single page showAll Cat
+		$('#content_menu_single .show_all a').click(function(){
+			showAllCat(iTileSizeSingle);
+		});
+
+	});
 });
