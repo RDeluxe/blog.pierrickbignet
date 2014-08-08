@@ -491,6 +491,9 @@
   	margin: 10px 0 10px 0;
  }
 
+#screen #news_content .news p.legend_center {
+     font-style: italic;
+}
 
  #screen #news_content .news p.legend_right span.insert,
  #screen #news_content .news p.legend_left span.insert {
