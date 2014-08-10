@@ -221,18 +221,20 @@ add_filter( 'show_admin_bar' , 'my_function_admin_bar');
 
 function setCustomBackground() {
 
-    if ( is_home() || is_page() )
+    if ( is_home() || is_page() || is_front_page() )
     {
         $theme_options = get_option('theme_options');
         $background = $theme_options['background'];
+        $div_id = "index_background_picture";
     }
     else
     {
         $backgroundArray = get_post_custom_values("background");
         $background = $backgroundArray[0];
+        $div_id = "news_background_picture";
     }
     $style = '<style type="text/css">';
-    $style .= '#news_header_picture {background:url("'.$background.'") center no-repeat #e7e7e2; }';
+    $style .= '#' .$div_id . ' {background:url("'.$background.'") center no-repeat #e7e7e2; }';
     $style .= '</style>';
 
     echo $style;

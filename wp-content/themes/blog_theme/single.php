@@ -2,7 +2,7 @@
 	get_header('single');
 	if(have_posts()) : while( have_posts() ) : the_post();
  ?>
-<div id="news_header_picture">
+<div id="news_background_picture">
 
 </div>
 <div id="news_content">

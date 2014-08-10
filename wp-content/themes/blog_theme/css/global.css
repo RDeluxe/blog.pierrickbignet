@@ -359,7 +359,16 @@
 
 /* CONTENT MENU SINGLE END */
 
-#screen #news_header_picture {
+/* Single page background picture */
+#screen #news_background_picture {
+     height: 46.25em;
+     width: 100%;
+     position: absolute;
+     z-index: 0;
+}
+
+/* Index background picture */
+#screen #index_background_picture {
      height: 46.25em;
      width: 100%;
      position: absolute;
