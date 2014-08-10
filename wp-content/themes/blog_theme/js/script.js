@@ -188,20 +188,22 @@ jQuery(document).ready(function($) {
 
 		/*
 		* Changing the 'note' div background
-		 */
-		var score = $('.note span').attr('score');
-		if(score == undefined) {
-			score = 100;
-		}
-		$('#scoreBar').css({
-    background: "-webkit-linear-gradient(left, #2782d7 "+score+"%, white 50%)"
-		});
-
-		if(score < 90) {
-			$('.note span').css({
-				color: "#2782d7"
+		*/
+		$('.note').each(function( index ) {
+			console.log('pouet pouet pouet');
+			var score = $(this).attr('score');
+			if(score == undefined) {
+				score = 100;
+			}
+			$(this).css({
+				background: "-webkit-linear-gradient(left, #2782d7 "+score+"%, white 50%)"
 			});
-		}
 
+			if(score < 90) {
+				$('.note span').css({
+					color: "#2782d7"
+				});
+			}
+		});
 	});
 });
