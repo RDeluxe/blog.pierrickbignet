@@ -190,6 +190,9 @@ jQuery(document).ready(function($) {
 		* Changing the 'note' div background
 		 */
 		var score = $('.note span').attr('score');
+		if(score == undefined) {
+			score = 100;
+		}
 		$('#scoreBar').css({
     background: "-webkit-linear-gradient(left, #2782d7 "+score+"%, white 50%)"
 		});
