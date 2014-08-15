@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 tinyMCE.addI18n('it.template_dlg',{
 title:"Modelli",
 label:"Modello",
@@ -12,4 +13,20 @@ months_long:"January,February,March,April,May,June,July,August,September,October
 months_short:"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
 day_long:"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday",
 day_short:"Sun,Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+=======
+tinyMCE.addI18n('it.template_dlg',{
+title:"Modelli",
+label:"Modello",
+desc_label:"Descrizione",
+desc:"Insert predefined template content",
+select:"Seleziona modello",
+preview:"Preview",
+warning:"Warning: Updating a template with a different one may cause data loss.",
+mdate_format:"%Y-%m-%d %H:%M:%S",
+cdate_format:"%Y-%m-%d %H:%M:%S",
+months_long:"January,February,March,April,May,June,July,August,September,October,November,December",
+months_short:"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
+day_long:"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday",
+day_short:"Sun,Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+>>>>>>> 02fbc9bfccc6638b4f58dfcc89150728a10580f2
 });
