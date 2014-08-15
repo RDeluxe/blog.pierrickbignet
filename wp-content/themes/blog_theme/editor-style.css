@@ -1,0 +1,5 @@
+p.legend_right { clear:both; text-align:right; margin:0px 20px 0px 20px; font-style:italic; font-family:'Arial'; color:#575757; font-size:12px;}  
+p.legend_left { clear:both; text-align:left; margin:0px 20px 0px 20px; font-style:italic; font-family:'Arial'; color:#575757; font-size:12px;}  
+p.legend_center { clear:both; text-align:center; margin:0px 20px 0px 20px; font-style:italic; font-family:'Arial'; color:#575757; font-size:12px;}  
+p.bold {font-weight:bold;}
+p.italic {font-style:italic;}

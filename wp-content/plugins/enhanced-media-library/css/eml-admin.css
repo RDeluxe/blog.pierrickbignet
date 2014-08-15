@@ -1,0 +1,262 @@
+
+/* == Attachment Fields == */
+
+.compat-item .field input[type="checkbox"] {
+	width: auto;
+}
+
+.term-list {
+	background-color: #fff;
+	border: 1px solid #dfdfdf;
+	border-radius: 3px;
+	padding: 10px 10px 5px;
+	margin: 0 0 10px;
+}
+.term-list li {
+	line-height: 22px;
+}
+.term-list li input[type="checkbox"] {
+	margin: -4px 4px 0 0 !important;
+}
+.term-list .children {
+	margin: 5px 0 0 20px;
+}
+
+
+/* == Taxonomy Filters == */
+
+.media-frame select[class^="attachment"] {
+	margin-top: 11px !important;
+	margin-right: 10px !important;
+	max-width: 140px !important;
+}
+
+
+/* == Media Uploader Boxes' Positions == */
+
+.attachments-browser .media-toolbar {
+	height: auto;
+	position: relative;
+	margin-right: 300px;
+}
+.attachments-browser .media-toolbar-primary,
+.attachments-browser .media-toolbar-secondary {
+	float: none;
+	height: auto;
+}
+.attachments-browser .media-toolbar-secondary select,
+.attachments-browser .media-toolbar-secondary .instructions {
+	float: left;
+}
+.media-frame .spinner {
+	float: none;
+	position: absolute;
+	z-index: 100;
+	top: 0;
+	right: 10px;
+}
+
+@media only screen and (max-width: 900px) 
+{
+	.attachments-browser .media-toolbar {
+		margin-right: 180px;
+		height: auto;
+	}
+}
+
+@media only screen and (max-width: 640px), screen and (max-height: 400px)
+{
+	.attachments-browser .attachments {
+		top: 20px;
+	}
+	.media-frame .attachments-browser {
+		padding-bottom: 20px;
+		height: auto;
+	}
+	.media-sidebar .attachment-details h3 {
+		margin-top: 24px;
+	}
+}
+
+
+/* == MIME types Option Page Styles == */
+
+.wpuxss-eml-mime-type-list {
+	table-layout: fixed;
+}
+.wpuxss-eml-mime-type-list td {
+	padding: 8px 7px;
+}
+.wpuxss-eml-mime-type-list .checkbox_td {
+	text-align: center;
+}
+.wpuxss-eml-mime-type-list input[type="text"] {
+	width: 120px;
+}
+.wpuxss-eml-column-extension {
+	width: 130px;
+}
+.wpuxss-eml-column-singular,
+.wpuxss-eml-column-plural {
+	width:120px;
+}
+.wpuxss-eml-column-filter {
+	width: 70px;
+}
+.wpuxss-eml-column-upload {
+	width: 90px;
+}
+.wpuxss-eml-column-delete {
+	width: 30px;
+}
+
+
+/* == Taxonomies Option Page Styles == */
+
+.wpuxss-eml-settings-list {
+	border-top: 1px solid #dfdfdf;
+}
+.wpuxss-eml-settings-list > li {
+	border-bottom: 1px solid #dfdfdf;
+	padding: 8px 7px;
+	margin: 0;
+	position: relative;
+	overflow: hidden;
+}
+.wpuxss-eml-settings-list > li > label {
+	font-size: 14px;
+	display: inline-block;
+	margin-right: 100px;
+}
+.wpuxss-eml-settings-list input {
+	margin: 0;
+}
+.wpuxss-eml-settings-list > li .wpuxss-eml-button-edit {
+	position: absolute;
+	right: 40px;
+	top: 7px;
+	text-decoration: none;
+	height: 14px;
+	line-height: 14px;
+	border-radius: 10px;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	padding: 3px 10px;
+}
+.wpuxss-eml-settings-list.wpuxss-eml-non-media-taxonomy-list > li .wpuxss-eml-button-edit {
+	right: 10px;
+}
+.wpuxss-eml-settings-list > li .wpuxss-eml-button-remove {
+	position: absolute;
+	right: 10px;
+	top: 7px;
+}
+.wpuxss-eml-settings-list .wpuxss-eml-assigned {
+	margin-right:10px;
+}
+
+.wpuxss-eml-taxonomy-edit label {
+	display: inline-block;
+	width: 160px;
+}
+.wpuxss-eml-taxonomy-edit .wpuxss-eml-labels-edit {
+	float: left;
+	width: 49%;
+	margin-right: 1%;
+}
+.wpuxss-eml-taxonomy-edit .wpuxss-eml-settings-edit {
+	float: left;
+	width: 49%;
+	margin-left: 1%;
+}
+.wpuxss-eml-taxonomy-edit .wpuxss-eml-settings-edit li {
+	padding: 3px 0;
+}
+.wpuxss-eml-taxonomy-edit .wpuxss-eml-labels-edit label {
+	display: inline-block;
+	width: 100px;
+}
+.wpuxss-eml-taxonomy-edit .wpuxss-eml-labels-edit input {
+	min-width: 150px;
+}
+
+
+/* == Buttons Styles == */
+
+.wpuxss-eml-button-remove {
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	line-height: 1em;
+	font-size: 18px;
+	font-family: Arial, Helvetica, sans-serif;
+	height: 20px;
+	width: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+.wpuxss-eml-button-remove:hover {
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+.wpuxss-eml-button-container-right {
+	text-align: right;
+	margin: 20px 0 0;
+}
+
+
+/* == Option Page Generic Styles == */
+
+#toplevel_page_media-library .wp-menu-image {
+	background-position: -119px -33px !important;
+}
+
+#wpuxss-eml-global-options-wrap .postbox {
+	background-image:none !important;	
+	background-color:#f9f9f9 !important;
+	position: relative;
+}
+
+#wpuxss-eml-global-options-wrap .postbox#wpuxss-credits {
+	background-color: #fff !important;
+}
+#wpuxss-credits .author {
+	font-style: italic;
+	margin: 30px 0 0;
+	padding: 10px 0 5px;
+	border-top: 1px solid #e0e5e9;
+}
+#wpuxss-credits .logo-webbistro {
+	font-style: italic;
+	text-decoration: none;
+}
+#wpuxss-credits .icon-webbistro {
+	font-family: 'webbistro';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+#wpuxss-credits h4 {
+	margin: 20px 0 4px;
+}
+#wpuxss-credits p,
+#wpuxss-credits ul {
+	margin-top: 0;
+}
+#wpuxss-credits li {
+	list-style: disc;
+	margin-left: 1.4em;
+}
+
+@font-face {
+	font-family: 'webbistro';
+	src:url('../fonts/webbistro.eot');
+	src:url('../fonts/webbistro.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/webbistro.woff') format('woff'),
+		url('../fonts/webbistro.ttf') format('truetype'),
+		url('../fonts/webbistro.svg#webbistro') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
